@@ -1,7 +1,6 @@
 Wdiportal::Application.routes.draw do
 
-  devise_for :users
-  resources :gists, :resources, :events, :projects, :assignments, :labs
+  resources :gists, :resources, :events, :projects, :assignments, :labs, :squads
 
   root :to => "site#home"
 
@@ -9,5 +8,12 @@ Wdiportal::Application.routes.draw do
   get "site/about", to: "site#about"
 
   get "/users", to: "users#index"
+
+  devise_for :instructors
+  devise_for :users
+
+  devise_scope :user do
+    get "/users/sign_out", :to => "devise/sessions#destroy"
+  end
 
 end
