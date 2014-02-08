@@ -2,12 +2,16 @@ body {
 	background-color: #E3E3E3;
 }
 
+h1 {
+	font-size: 70px;
+}
+
 a, a:hover {
 	color: Black;
 }
 
 table tr {
-	border: 1px solid black;
+	border: 1px solid Grey;
 	background-color: rgba(255, 255, 255, 0.7);
 	margin: 10px auto;
 }
@@ -26,7 +30,7 @@ table td {
 }
 
 .medium {
-	width: 500px;
+	width: 550px;
 }
 
 .large {

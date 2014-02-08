@@ -19,9 +19,9 @@
     <label>Comments</label> <br>
     <%= f.text_area :comment, class: "form-control" %> <br><br>
 
-    <%= f.submit "Save changes", :class => "btn btn-default" %>
+    <%= f.submit "Save changes", :class => "btn btn-primary" %>
 
-<% end %>
+<% end %> <br>
 
 <%= button_to "Delete lab", lab_path(@lab), :method => "delete", :class => "btn btn-default" %>
 

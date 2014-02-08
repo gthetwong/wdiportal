@@ -10,9 +10,9 @@
     <label>Url</label>  <br>
     <%= f.text_field :url, class: "form-control" %> <br><br>
 
-    <%= f.submit "Save changes", :class => "btn btn-default" %>
+    <%= f.submit "Save changes", :class => "btn btn-primary" %>
 
-<% end %>
+<% end %> <br>
 
 <%= button_to "Delete assignment", assignment_path(@assignment), :method => "delete", :class => "btn btn-default" %>
 

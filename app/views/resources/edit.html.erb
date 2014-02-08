@@ -13,9 +13,9 @@
     <label>Description</label>  <br>
     <%= f.text_area :description, class: "form-control" %> <br><br>
 
-    <%= f.submit "Save changes", :class => "btn btn-default" %>
+    <%= f.submit "Save changes", :class => "btn btn-primary" %>
 
-<% end %>
+<% end %> <br>
 
 <%= button_to "Delete resource", resource_path(@resource), :method => "delete", :class => "btn btn-default" %>
 
