@@ -1,17 +1,38 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Wdiportal</title>
+  <title>WDI Portal</title>
   <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
   <%= csrf_meta_tags %>
 </head>
 <body>
 
-<p class="notice"><%= notice %></p>
-<p class="alert"><%= alert %></p>
+<div class="containter">
 
-<%= yield %>
+	<div class="row text-center">
 
+		<h1>WDI NOTES</h1>
+
+		<div class="btn-group btn-group-lg">
+			<%= link_to "Gists", "/gists", :class => "btn btn-default" %>
+		  	<%= link_to "Resources", "/resources", :class => "btn btn-default" %>
+		  	<%= link_to "Assignments", "/assignments", :class => "btn btn-default" %>
+		  	<%= link_to "Labs", "/labs", :class => "btn btn-default" %>
+		  	<%= link_to "Projects", "/projects", :class => "btn btn-default" %>
+		  	<%= link_to "Squads", "/", :class => "btn btn-default" %>
+		  	<%= link_to "Events", "/events", :class => "btn btn-default" %>
+		</div>
+
+		<p class="notice"><%= notice %></p>
+		<p class="alert"><%= alert %></p>
+
+	</div>
+
+	<%= yield %>
+
+</div>
 </body>
 </html>
+
+

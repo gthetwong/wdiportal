@@ -1,3 +1,5 @@
+<div class="gist center small">
+
 <h2>Gists</h2>
 
 <%= button_to "New gist", new_gist_path, method: "get", class: "btn btn-default" %> <br>
@@ -11,6 +13,9 @@
 	      		<%= link_to f.title, "#{f.url}", :target => "_blank" %>
 	      	</td>
 	      	<td>
+	      		Instructor
+			</td>
+			<td>
 	      		<%= button_to "Edit", edit_gist_path(f), :method => "get", :class => "btn btn-default" %>
 			</td>
     	</tr>
@@ -18,3 +23,5 @@
 	<% end %>
 
 </table><br>
+
+</div>
