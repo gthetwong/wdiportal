@@ -1,0 +1,13 @@
+<h2>New Gist</h2>
+
+<%= form_for @gist, class: "form-group" do |f| %>
+
+    <label>Title</label> <br>
+    <%= f.text_field :title, class: "form-control" %> <br><br>
+
+    <label>Url</label>  <br>
+    <%= f.text_field :url, class: "form-control" %> <br><br>
+
+    <%= f.submit "Save", :class => "btn btn-default" %>
+
+<% end %>

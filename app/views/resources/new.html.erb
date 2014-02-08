@@ -1,0 +1,16 @@
+<h2>New Resource</h2>
+
+<%= form_for @resource, class: "form-group" do |f| %>
+
+    <label>Title</label> <br>
+    <%= f.text_field :title, class: "form-control" %> <br><br>
+
+    <label>Link</label>  <br>
+    <%= f.text_field :url, class: "form-control" %> <br><br>
+
+    <label>Description</label>  <br>
+    <%= f.text_area :description, class: "form-control" %> <br><br>
+
+    <%= f.submit "Save", :class => "btn btn-default" %>
+
+<% end %>

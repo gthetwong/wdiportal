@@ -1,0 +1,21 @@
+<h2>Edit Project</h2>
+
+<%= form_for @project, class: "form-group" do |f| %>
+
+    <label>Title</label> <br>
+    <%= f.text_field :title, class: "form-control" %> <br><br>
+
+    <label>Link</label>  <br>
+    <%= f.text_field :url, class: "form-control" %> <br><br>
+
+    <label>What are the main technologies you used?</label>  <br>
+    <%= f.text_field :technology, class: "form-control" %> <br><br>
+
+    <label>What does your project do?</label>  <br>
+    <%= f.text_area :description, class: "form-control" %> <br><br>
+
+    <%= f.submit "Save changes", :class => "btn btn-default" %>
+
+<% end %>
+
+<%= button_to "Delete project", project_path(@project), :method => "delete", :class => "btn btn-default" %>

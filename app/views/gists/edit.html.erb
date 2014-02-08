@@ -1,0 +1,15 @@
+<h2>Edit Gist</h2>
+
+<%= form_for @gist, class: "form-group" do |f| %>
+
+    <label>Title</label> <br>
+    <%= f.text_field :title, class: "form-control" %> <br><br>
+
+    <label>Url</label>  <br>
+    <%= f.text_field :url, class: "form-control" %> <br><br>
+
+    <%= f.submit "Save changes", :class => "btn btn-default" %>
+
+<% end %>
+
+<%= button_to "Delete gist", gist_path(@gist), :method => "delete", :class => "btn btn-default" %>

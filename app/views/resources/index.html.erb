@@ -1,0 +1,24 @@
+<h2>Resources</h2>
+
+<%= button_to "New resource", new_resource_path, method: "get", class: "btn btn-default" %> <br>
+
+<table>
+
+	<% @resources.each do |f| %>
+	
+		<tr>
+			<td>
+	      		<%= link_to f.title, "#{f.url}", :target => "_blank" %> <br>
+	      		<%= f.description %>
+	      	</td>
+			<td>
+	      		Student
+	      	</td>
+			<td>
+	      		<%= button_to "Edit", edit_resource_path(f), :method => "get", :class => "btn btn-default" %>
+			</td>
+    	</tr>
+ 
+	<% end %>
+
+</table><br>

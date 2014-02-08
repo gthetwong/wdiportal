@@ -1,0 +1,24 @@
+<h2>Edit Lab</h2>
+
+<%= form_for @lab, class: "form-group" do |f| %>
+
+    <label>Link</label> <br>
+    <%= f.text_field :url, class: "form-control" %> <br><br>
+
+    <label>How do you feel about your lab?</label> <br>
+    <%= select_tag(:feeling, options_for_select([
+    		["I did excellently", "I did excellently"],
+    		["I did well", "I did well"],
+    		["I managed to complete it", "I managed to complete it"],
+    		["I'm uncertain", "I'm uncertain"],
+    		["I'm stuggling", "I'm stuggling"]
+    	])) %> <br><br>
+
+    <label>Comments</label> <br>
+    <%= f.text_area :comment, class: "form-control" %> <br><br>
+
+    <%= f.submit "Save changes", :class => "btn btn-default" %>
+
+<% end %>
+
+<%= button_to "Delete lab", lab_path(@lab), :method => "delete", :class => "btn btn-default" %>

@@ -1,0 +1,27 @@
+<h2>Edit Event</h2>
+
+<%= form_for @event, class: "form-group" do |f| %>
+
+    <label>Title</label> <br>
+    <%= f.text_field :title, class: "form-control" %> <br><br>
+
+    <label>Date</label>  <br>
+    <%= f.date_field :date, class: "form-control" %> <br><br>
+
+    <label>Time</label>  <br>
+    <%= f.time_field :date, class: "form-control" %> <br><br>
+
+    <label>Location</label>  <br>
+    <%= f.text_field :location, class: "form-control" %> <br><br>
+
+    <label>Description</label>  <br>
+    <%= f.text_area :description, class: "form-control" %> <br><br>
+
+    <label>Cost</label>  <br>
+    <%= f.number_field :cost, class: "form-control" %> <br><br>
+
+    <%= f.submit "Save changes", :class => "btn btn-default" %>
+
+<% end %>
+
+<%= button_to "Delete event", event_path(@event), :method => "delete", :class => "btn btn-default" %>

@@ -1,0 +1,15 @@
+<h2>Edit Assignment</h2>
+
+<%= form_for @assignment, class: "form-group" do |f| %>
+
+    <label>Title</label> <br>
+    <%= f.text_field :title, class: "form-control" %> <br><br>
+
+    <label>Url</label>  <br>
+    <%= f.text_field :url, class: "form-control" %> <br><br>
+
+    <%= f.submit "Save changes", :class => "btn btn-default" %>
+
+<% end %>
+
+<%= button_to "Delete assignment", assignment_path(@assignment), :method => "delete", :class => "btn btn-default" %>
