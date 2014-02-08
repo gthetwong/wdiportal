@@ -1,0 +1,22 @@
+<div class="resource center small">
+
+<h2>Users</h2>
+
+<table>
+
+	<% @users.each do |user| %>
+	
+		<tr>
+			<td>
+	      		<%= user.email %>
+	      	</td>
+			<td>
+	      		<%= user.role %>
+			</td>
+    	</tr>
+ 
+	<% end %>
+
+</table><br>
+
+</div>

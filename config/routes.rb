@@ -8,4 +8,6 @@ Wdiportal::Application.routes.draw do
   get "site/home", to: "site#home"
   get "site/about", to: "site#about"
 
+  get "/users", to: "users#index"
+
 end
