@@ -1,41 +1,41 @@
 class SquadsController < ApplicationController
 
 	def index
-		@events = Event.all
+		@squads = Squad.all
 	end
 
 	def new
-		@event = Event.new
+		@squad = Squad.new
 	end
 
 	def show
 		id = params.require(:id)
-		@event = Event.find(id)
+		@squad = Squad.find(id)
 	end
 
 	def create
-		parameters = params.require(:event).permit(:title, :date, :location, :cost, :description)
-		event = Event.create(parameters)
-		redirect_to events_path
+		parameters = params.require(:squad).permit(:title, :date, :location, :cost, :description)
+		squad = Squad.create(parameters)
+		redirect_to squads_path
 	end
 
 	def edit
 		id = params.require(:id)
-		@event = Event.find(id)
+		@squad = Squad.find(id)
 	end
 
 	def update
 		id = params.require(:id)
-		updates = params.require(:event).permit(:title, :date, :location, :cost, :description)
-		event = Event.find(id)
-		event.update(updates)
-		redirect_to events_path
+		updates = params.require(:squad).permit(:title, :date, :location, :cost, :description)
+		squad = Squad.find(id)
+		squad.update(updates)
+		redirect_to squads_path
 	end
 
 	def destroy
 		id = params[:id]
-		Event.destroy(id)
-		redirect_to events_path
+		Squad.destroy(id)
+		redirect_to squads_path
 	end
-	
+
 end

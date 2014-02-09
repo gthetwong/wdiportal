@@ -5,7 +5,12 @@ class GistsController < ApplicationController
 	end
 
 	def new
-		@gist = Gist.new
+		if user_signed_in? && current_user.role == "instructor"
+			@gist = Gist.new
+		else
+			flash[:alert] = "You must be in instructor to add a gist"
+			redirect_to gists_path
+		end
 	end
 
 	def create

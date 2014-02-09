@@ -9,7 +9,6 @@ Wdiportal::Application.routes.draw do
 
   get "/users", to: "users#index"
 
-  devise_for :instructors
   devise_for :users
 
   devise_scope :user do
