@@ -1,11 +1,14 @@
 class SquadsController < ApplicationController
 
+	include SquadsHelper
+
 	def index
 		@squads = Squad.all
 	end
 
 	def new
 		@squad = Squad.new
+		@instructors = instructors
 	end
 
 	def show
@@ -35,6 +38,15 @@ class SquadsController < ApplicationController
 	def destroy
 		id = params[:id]
 		Squad.destroy(id)
+		redirect_to squads_path
+	end
+
+	def reset
+		squads = Squad.all
+		squads.each do |squad|
+			instructor = squad_instructor(squad)
+			squad.users = instructor
+		end
 		redirect_to squads_path
 	end
 

@@ -15,7 +15,12 @@
 	      		<%= f.description %>
 	      	</td>
 			<td>
-	      		Student
+	      		<% f.users.each do |user| %>
+	      			<%= user.firstname %> <%= user.lastname %>
+	      		<% end %>
+			</td>
+			<td>
+	      		<%= button_to "Join", join_project_path(f), :method => "get", :class => "btn btn-default" %>
 			</td>
 			<td>
 	      		<%= button_to "Edit", edit_project_path(f), :method => "get", :class => "btn btn-default" %>

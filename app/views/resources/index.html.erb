@@ -4,9 +4,12 @@
 
 <%= button_to "New resource", new_resource_path, method: "get", class: "btn btn-warning" %> <br>
 
+From students
+
 <table>
 
 	<% @resources.each do |f| %>
+		<!-- < if !f.users.nil? && f.users.role == "student" %> =-->
 	
 		<tr>
 			<td>
@@ -20,9 +23,32 @@
 	      		<%= button_to "Edit", edit_resource_path(f), :method => "get", :class => "btn btn-default" %>
 			</td>
     	</tr>
- 
 	<% end %>
 
 </table><br>
+
+
+From instructors
+
+<table>
+
+	<% @resources.each do |f| %>
+		<!-- < if !f.users.nil? && f.users.role == "instructor" %> =-->
+	
+		<tr>
+			<td>
+	      		<%= link_to f.title, "#{f.url}", :target => "_blank" %> <br>
+	      		<%= f.description %>
+	      	</td>
+			<td>
+	      		Student
+	      	</td>
+			<td>
+	      		<%= button_to "Edit", edit_resource_path(f), :method => "get", :class => "btn btn-default" %>
+			</td>
+    	</tr>
+	<% end %>
+
+</table>
 
 </div>

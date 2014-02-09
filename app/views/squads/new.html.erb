@@ -1,2 +1,20 @@
-<h1>Squads#new</h1>
-<p>Find me in app/views/squads/new.html.erb</p>
+<div class="resource center small">
+
+<h2>New Squad</h2>
+
+<%= form_for @squad, class: "form-group" do |f| %>
+
+    <label>Instructor</label> <br>
+
+    <% options = [] %>
+    <% @instructors.each do |instructor| %>
+    	<% options << instructor.firstname %>
+    <% end %>
+
+    <%= select_tag(:squad_instructor, options_for_select(options)) %> <br><br>
+
+    <%= f.submit "Save", :class => "btn btn-primary" %>
+
+<% end %>
+
+</div>

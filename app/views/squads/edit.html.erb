@@ -1,2 +1,17 @@
-<h1>Squads#edit</h1>
-<p>Find me in app/views/squads/edit.html.erb</p>
+<div class="squad center small">
+
+<h2>Edit Squad</h2>
+
+<%= form_for @squad, class: "form-group" do |f| %>
+
+    <label>Title</label> <br>
+
+
+
+    <%= f.submit "Save changes", :class => "btn btn-primary" %>
+
+<% end %> <br>
+
+<%= button_to "Delete squad", squad_path(@squad), :method => "delete", :class => "btn btn-default" %>
+
+</div>

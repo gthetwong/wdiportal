@@ -33,4 +33,12 @@ class ProjectsController < ApplicationController
 		redirect_to projects_path
 	end
 
+	def join
+		id = params.require(:id)
+		project = Project.find(id)
+		project.users << current_user
+		flash[:notice] = "Good luck working on #{project.title}!"
+		redirect_to projects_path
+	end
+
 end

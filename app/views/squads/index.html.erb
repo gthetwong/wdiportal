@@ -1,2 +1,35 @@
-<h1>Squads#index</h1>
-<p>Find me in app/views/squads/index.html.erb</p>
+<div class="squad center medium">
+
+<h2>Squads</h2>
+
+<%= button_to "New squad", new_squad_path, method: "get", class: "btn btn-warning" %> <br>
+
+<table>
+
+	<% @squads.each do |f| %>
+	
+		<tr>
+	    	<td>
+	    		Instructor <br>
+	      		<%= squad_instructor(f).first.firstname %> <br><br>
+			
+	      		<% if squad_students(f).empty? %>
+	      			No students assigned<br>
+	      		<% else %>
+				    Students <br>
+		      		<% squad_students(f).each do |student| %>
+		      			<%= student.firstname %> <br>
+		      		<% end %> <br><br>
+		      	<% end %>
+
+				<%= button_to "Edit", edit_squad_path(f), :method => "get", :class => "btn btn-default" %>
+			</td>
+    	</tr>
+ 
+	<% end %>
+
+</table><br>
+
+<%= button_to "Reset squads", reset_squads_path, :method => "get", :class => "btn btn-default", :confirm => "Resetting all squads will remove all students from all squads!\n\nThe squads will still exist and have their assigned instructors. To delete squads entirely, go to their individual edit pages." %>
+
+</div>
