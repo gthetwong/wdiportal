@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140209021240) do
+ActiveRecord::Schema.define(version: 20140209025502) do
 
   create_table "assignments", force: true do |t|
     t.string   "title"
@@ -36,7 +36,20 @@ ActiveRecord::Schema.define(version: 20140209021240) do
     t.string   "url"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "user_id"
   end
+
+  add_index "gists", ["user_id"], name: "index_gists_on_user_id"
+
+  create_table "group_projects", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "project_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "group_projects", ["project_id"], name: "index_group_projects_on_project_id"
+  add_index "group_projects", ["user_id"], name: "index_group_projects_on_user_id"
 
   create_table "labs", force: true do |t|
     t.string   "url"
@@ -44,7 +57,10 @@ ActiveRecord::Schema.define(version: 20140209021240) do
     t.string   "feeling"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "user_id"
   end
+
+  add_index "labs", ["user_id"], name: "index_labs_on_user_id"
 
   create_table "projects", force: true do |t|
     t.string   "title"
@@ -61,7 +77,10 @@ ActiveRecord::Schema.define(version: 20140209021240) do
     t.string   "description"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "user_id"
   end
+
+  add_index "resources", ["user_id"], name: "index_resources_on_user_id"
 
   create_table "sites", force: true do |t|
     t.string   "home"
@@ -91,9 +110,11 @@ ActiveRecord::Schema.define(version: 20140209021240) do
     t.text     "role",                   default: "student"
     t.string   "firstname"
     t.string   "lastname"
+    t.integer  "squad_id"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+  add_index "users", ["squad_id"], name: "index_users_on_squad_id"
 
 end

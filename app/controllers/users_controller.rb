@@ -9,16 +9,16 @@ class UsersController < ApplicationController
 		@user = User.find(id)
 	end
 
-	def edit
+	def form
 		id = params.require(:id)
 		@user = User.find(id)
 	end
 
-	def update
+	def change_role
 		id = params.require(:id)
-		updates = params.require(:user).permit(:title, :date, :location, :cost, :description)
+		update = params.require(:role)
 		user = User.find(id)
-		user.update(updates)
+		user.update_attribute(:role, update)
 		redirect_to users_path
 	end
 

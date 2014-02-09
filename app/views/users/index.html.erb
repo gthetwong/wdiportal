@@ -8,10 +8,15 @@
 	
 		<tr>
 			<td>
+				<%= user.firstname %>
+				<%= user.lastname %> <br>
 	      		<%= user.email %>
 	      	</td>
 			<td>
 	      		<%= user.role %>
+			</td>
+			<td>
+	      		<%= button_to "Change role", role_form_path(user), :method => "get", :class => "btn btn-default" %>
 			</td>
     	</tr>
  

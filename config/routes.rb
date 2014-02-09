@@ -4,6 +4,9 @@ Wdiportal::Application.routes.draw do
 
   root :to => "site#home"
 
+  get "/users/:id/role", to: "users#form", as: :role_form
+  patch "/users/:id/role", to: "users#change_role", as: :change_role
+
   get "site/home", to: "site#home"
   get "site/about", to: "site#about"
 
@@ -14,5 +17,7 @@ Wdiportal::Application.routes.draw do
   devise_scope :user do
     get "/users/sign_out", :to => "devise/sessions#destroy"
   end
+
+
 
 end

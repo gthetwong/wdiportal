@@ -1,0 +1,18 @@
+<div class="user center small">
+
+<h2>Change Role</h2>
+
+<%= form_for @user, url: change_role_path, class: "form-group" do |f| %>
+
+    <label>New role</label> <br>
+    <%= select_tag(:role, options_for_select([
+    		["student", "student"],
+    		["instructor", "instructor"],
+    		["coordinator", "coordinator"],
+    	])) %> <br><br>
+
+    <%= f.submit "Save change", :method => :post, :class => "btn btn-primary" %>
+
+<% end %> <br>
+
+</div>
