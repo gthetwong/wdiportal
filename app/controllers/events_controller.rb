@@ -33,9 +33,16 @@ class EventsController < ApplicationController
 	end
 
 	def destroy
-		id = params[:id]
+		id = params.require(:id)
 		Event.destroy(id)
 		redirect_to events_path
 	end
 
+	def rsvp
+		id = params.require(:id)
+		event = Event.find(id)
+		event.users << current_user
+		flash[:notice] = "You are attending #{event.title}!"
+		redirect_to events_path
+	end
 end

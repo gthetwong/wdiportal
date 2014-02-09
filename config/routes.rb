@@ -7,6 +7,8 @@ Wdiportal::Application.routes.draw do
   get "/users/:id/role", to: "users#form", as: :role_form
   patch "/users/:id/role", to: "users#change_role", as: :change_role
 
+  get "/events/:id/rsvp", to: "events#rsvp", as: :rsvp
+
   get "site/home", to: "site#home"
   get "site/about", to: "site#about"
 

@@ -17,8 +17,11 @@
 	      		<%= f.title %> <br>
 	      		<%= f.location %> <br>
 	      		<%= f.description %>
-	      		<%= f.cost %>
+	      		$<%= f.cost %>
 	      	</td>
+	      	<td>
+	      		<%= button_to "Attend", rsvp_path(f), :method => "get", :class => "btn btn-default" %>
+			</td>
 	      	<td>
 	      		<%= button_to "Students attending", event_path(f), :method => "get", :class => "btn btn-default" %>
 			</td>
