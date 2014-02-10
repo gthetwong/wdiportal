@@ -1,7 +1,5 @@
 class SquadsController < ApplicationController
 
-	include SquadsHelper
-
 	def index
 		empty_squads = Squad.all
 		empty_squads.each do |squad|

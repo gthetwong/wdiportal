@@ -7,6 +7,7 @@ class UsersController < ApplicationController
 	def show
 		id = params.require(:id)
 		@user = User.find(id)
+		@instructor = @user.squad.users.where(:role => "instructor").first.firstname unless @user.squad.nil?
 	end
 
 	def form

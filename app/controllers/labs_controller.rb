@@ -6,11 +6,18 @@ class LabsController < ApplicationController
 
 	def new
 		@lab = Lab.new
+		@assignments = Assignment.all
 	end
 
 	def create
-		parameters = params.require(:lab).permit(:title, :url)
+		parameters = params.require(:lab).permit(:url, :comment)
+		parameters["feeling"] = params[:feeling]
+		assignment = Assignment.find_by_id(params[:lab_assignment])
+
 		lab = Lab.create(parameters)
+		assignment.labs << lab
+		current_user.labs << lab
+
 		redirect_to labs_path
 	end
 
@@ -21,7 +28,8 @@ class LabsController < ApplicationController
 
 	def update
 		id = params.require(:id)
-		updates = params.require(:lab).permit(:title, :url)
+		updates = params.require(:lab).permit(:url, :comment)
+		updates["feeling"] = params[:feeling]
 		lab = Lab.find(id)
 		lab.update(updates)
 		redirect_to labs_path

@@ -4,6 +4,15 @@
 
 <%= form_for @lab, class: "form-group" do |f| %>
 
+    <% options = [] %>
+    <% @assignments.each do |assignment| %>
+        <% assignment_array = [assignment.title, assignment.id] %>
+        <% options << assignment_array %>
+    <% end %>
+
+    <label>Assignment</label> <br>
+    <%= select_tag(:lab_assignment, options_for_select(options)) %> <br><br>
+
     <label>Link</label> <br>
     <%= f.text_field :url, class: "form-control" %> <br><br>
 

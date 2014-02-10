@@ -7,14 +7,35 @@
 <h3>Events</h3>
 
 <% @user.events.each do |event| %>
-	<%= link_to event.title, event_path(event) %> <br>
+	<%= link_to event.title, events_path %> <br>
 <% end %>
 
 <h3>Projects</h3>
 
 <% @user.projects.each do |project| %>
-	<%= link_to project.title, project_path(project) %> <br>
+	<%= link_to project.title, projects_path %> <br>
 <% end %>
 
+<h3>Gists</h3>
+
+<% @user.gists.each do |gist| %>
+	<%= link_to gist.title, gists_path %> <br>
+<% end %>
+
+<h3>Resources</h3>
+
+<% @user.resources.each do |resource| %>
+	<%= link_to resource.title, resources_path %> <br>
+<% end %>
+
+<h3>Labs</h3>
+
+<% @user.labs.each do |lab| %>
+	<%= link_to lab.assignment.title, assignments_path %> <br>
+<% end %>
+
+<h3>Squad</h3>
+
+<%= @instructor %>
 
 </div>

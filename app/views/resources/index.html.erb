@@ -9,7 +9,7 @@ From students
 <table>
 
 	<% @resources.each do |f| %>
-		<!-- < if !f.users.nil? && f.users.role == "student" %> =-->
+		<% if !f.user.nil? && f.user.role == "student" %>
 	
 		<tr>
 			<td>
@@ -17,12 +17,13 @@ From students
 	      		<%= f.description %>
 	      	</td>
 			<td>
-	      		Student
+	      		<%= f.user.firstname %>
 	      	</td>
 			<td>
 	      		<%= button_to "Edit", edit_resource_path(f), :method => "get", :class => "btn btn-default" %>
 			</td>
     	</tr>
+		<% end %>
 	<% end %>
 
 </table><br>
@@ -33,7 +34,7 @@ From instructors
 <table>
 
 	<% @resources.each do |f| %>
-		<!-- < if !f.users.nil? && f.users.role == "instructor" %> =-->
+		<% if !f.user.nil? && f.user.role == "instructor" %>
 	
 		<tr>
 			<td>
@@ -41,12 +42,13 @@ From instructors
 	      		<%= f.description %>
 	      	</td>
 			<td>
-	      		Student
+	      		<%= f.user.firstname %>
 	      	</td>
 			<td>
 	      		<%= button_to "Edit", edit_resource_path(f), :method => "get", :class => "btn btn-default" %>
 			</td>
     	</tr>
+    	<% end %>
 	<% end %>
 
 </table>

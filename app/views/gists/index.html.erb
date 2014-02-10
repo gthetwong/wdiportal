@@ -13,7 +13,7 @@
 	      		<%= link_to f.title, "#{f.url}", :target => "_blank" %>
 	      	</td>
 	      	<td>
-	      		Instructor
+	      		<%= f.user.firstname %>
 			</td>
 			<td>
 	      		<%= button_to "Edit", edit_gist_path(f), :method => "get", :class => "btn btn-default" %>

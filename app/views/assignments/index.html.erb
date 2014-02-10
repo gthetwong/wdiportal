@@ -13,6 +13,9 @@
 	      		<%= link_to f.title, "#{f.url}", :target => "_blank" %>
 	      	</td>
 	      	<td>
+	      		<%= button_to "Submit", new_lab_path, :method => "get", :class => "btn btn-default" %>
+			</td>
+	      	<td>
 	      		<%= button_to "Edit", edit_assignment_path(f), :method => "get", :class => "btn btn-default" %>
 			</td>
     	</tr>
