@@ -36,8 +36,12 @@ class ProjectsController < ApplicationController
 	def join
 		id = params.require(:id)
 		project = Project.find(id)
-		project.users << current_user
-		flash[:notice] = "Good luck working on #{project.title}!"
+		if project.users.include?(current_user)
+			flash[:notice] = "You're already working on #{project.title}!"
+		else
+			project.users << current_user
+			flash[:notice] = "Good luck working on #{project.title}!"
+		end
 		redirect_to projects_path
 	end
 

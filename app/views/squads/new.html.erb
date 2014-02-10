@@ -11,7 +11,8 @@
     <% end %>
 
     <% if options.empty? %>
-    	All instructors have already been assigned to a squad.
+    	All instructors have already been assigned to a squad. <br><br>
+    	<button class="btn btn-default"><%= link_to "Back", squads_path, :method => "get" %></button>
     <% else %>
 
 	    <label>Select squad instructor</label> <br>

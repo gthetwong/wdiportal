@@ -7,7 +7,13 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 
-Assignment.create(title: "Animal Shelter", url: "http://google.com")
+n = User.create(firstname: "Noah", lastname: "Kaplan", email: "noah@email.com", password: "password", password_confirmation: "password", role: "instructor")
+c = User.create(firstname: "Carina", lastname: "Ho", email: "carina@email.com", password: "password", password_confirmation: "password", role: "coordinator")
+one = User.create(firstname: "One", lastname: "Student", email: "student1@email.com", password: "password", password_confirmation: "password")
+two = User.create(firstname: "Two", lastname: "Student", email: "student2@email.com", password: "password", password_confirmation: "password")
+three = User.create(firstname: "Three", lastname: "Student", email: "student3@email.com", password: "password", password_confirmation: "password")
+
+one.assignments.create(title: "Animal Shelter", url: "http://google.com")
 Assignment.create(title: "OMDB App", url: "http://google.com")
 
 Event.create(title: "Bowling", date: Date.today, time: Time.now, location: "414 Brannan St", description: "Beer", cost: 0)

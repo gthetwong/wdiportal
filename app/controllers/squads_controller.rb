@@ -3,6 +3,10 @@ class SquadsController < ApplicationController
 	include SquadsHelper
 
 	def index
+		empty_squads = Squad.all
+		empty_squads.each do |squad|
+			squad.destroy if ( squad.users.empty? )
+		end
 		@squads = Squad.all
 	end
 
@@ -21,9 +25,11 @@ class SquadsController < ApplicationController
 		squad = Squad.create
 		squad.users << User.find_by_id(params[:squad_instructor])
 		students = params[:squad_students]["add"] unless params[:squad_students].nil?
-		students.each do |s|
-			student = User.find_by_id(s)
-			squad.users << student
+		if !students.nil?
+			students.each do |s|
+				student = User.find_by_id(s)
+				squad.users << student
+			end
 		end
 		redirect_to squads_path
 	end
