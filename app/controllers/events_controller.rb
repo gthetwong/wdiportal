@@ -14,8 +14,9 @@ class EventsController < ApplicationController
 	end
 
 	def create
-		parameters = params.require(:event).permit(:title, :date, :location, :cost, :description)
+		parameters = params.require(:event).permit(:title, :date, :time, :location, :cost, :description)
 		event = Event.create(parameters)
+		flash[:alert] = "Error: " + event.errors.full_messages.first if event.errors.any?
 		redirect_to events_path
 	end
 
@@ -26,9 +27,10 @@ class EventsController < ApplicationController
 
 	def update
 		id = params.require(:id)
-		updates = params.require(:event).permit(:title, :date, :location, :cost, :description)
+		updates = params.require(:event).permit(:title, :date, :time, :location, :cost, :description)
 		event = Event.find(id)
 		event.update(updates)
+		flash[:alert] = "Error: " + event.errors.full_messages.first if event.errors.any?
 		redirect_to events_path
 	end
 

@@ -4,6 +4,11 @@
 
 <%= button_to "New assignment", new_assignment_path, method: "get", class: "btn btn-warning" %> <br>
 
+<% if @assignments.empty? %>
+	<p>No assignments</p>
+<% else %>
+
+
 <table>
 
 	<% @assignments.each do |f| %>
@@ -23,5 +28,7 @@
 	<% end %>
 
 </table><br>
+
+<% end %>
 
 </div>

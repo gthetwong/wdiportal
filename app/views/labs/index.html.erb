@@ -4,6 +4,10 @@
 
 <%= button_to "Submit a lab", new_lab_path, method: "get", class: "btn btn-warning" %> <br>
 
+<% if @labs.empty? %>
+	<p>No labs</p>
+<% else %>
+
 <table>
 
 	<% @labs.each do |f| %>
@@ -27,5 +31,7 @@
 	<% end %>
 
 </table><br>
+
+<% end %>
 
 </div>

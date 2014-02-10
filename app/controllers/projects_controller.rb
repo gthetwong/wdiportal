@@ -10,8 +10,8 @@ class ProjectsController < ApplicationController
 
 	def create
 		parameters = params.require(:project).permit(:title, :url, :technology, :description)
-		project = Project.create(parameters)
-		flash[:alert] = project.errors.full_messages.first if project.errors.any?
+		project = current_user.projects.create(parameters)
+		flash[:alert] = "Error: " + project.errors.full_messages.first if project.errors.any?
 		redirect_to projects_path
 	end
 
@@ -25,7 +25,7 @@ class ProjectsController < ApplicationController
 		updates = params.require(:project).permit(:title, :url, :technology, :description)
 		project = Project.find(id)
 		project.update(updates)
-		flash[:alert] = project.errors.full_messages.first if project.errors.any?
+		flash[:alert] = "Error: " + project.errors.full_messages.first if project.errors.any?
 		redirect_to projects_path
 	end
 
@@ -39,10 +39,10 @@ class ProjectsController < ApplicationController
 		id = params.require(:id)
 		project = Project.find(id)
 		if project.users.include?(current_user)
-			flash[:notice] = "You're already working on {project.title}!"
+			flash[:notice] = "You're already working on #{project.title}!"
 		else
 			project.users << current_user
-			flash[:notice] = "Good luck working on {project.title}!"
+			flash[:notice] = "Good luck working on #{project.title}!"
 		end
 		redirect_to projects_path
 	end
@@ -50,9 +50,11 @@ class ProjectsController < ApplicationController
 	def leave
 		id = params.require(:id)
 		project = Project.find(id)
-		if project.users.include?(current_user)
+		if ( project.users.include?(current_user) ) && ( project.users.count != 1 )
 			project.users.delete(current_user)
 			flash[:notice] = "You are no longer working on #{project.title}"
+		elsif project.users.include?(current_user)
+			flash[:alert] = "You are the only student for this project, and cannot leave it. Select EDIT to delete the project."
 		else
 			flash[:notice] = "You weren't working on #{project.title}"
 		end

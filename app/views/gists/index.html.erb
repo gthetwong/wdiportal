@@ -4,6 +4,10 @@
 
 <%= button_to "New gist", new_gist_path, method: "get", class: "btn btn-warning" %> <br>
 
+<% if @gists.empty? %>
+	<p>No gists</p>
+<% else %>
+
 <table>
 
 	<% @gists.each do |f| %>
@@ -23,5 +27,7 @@
 	<% end %>
 
 </table><br>
+
+<% end %>
 
 </div>

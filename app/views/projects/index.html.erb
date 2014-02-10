@@ -4,6 +4,10 @@
 
 <%= button_to "New project", new_project_path, method: "get", class: "btn btn-warning" %> <br>
 
+<% if @projects.empty? %>
+	<p>No projects</p>
+<% else %>
+
 <table>
 
 	<% @projects.each do |f| %>
@@ -34,5 +38,7 @@
 	<% end %>
 
 </table><br>
+
+<% end %>
 
 </div>

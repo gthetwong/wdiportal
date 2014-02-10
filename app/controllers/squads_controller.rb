@@ -10,6 +10,7 @@ class SquadsController < ApplicationController
 
 	def new
 		@squad = Squad.new
+		@instructors = User.where(:role => "instructor")
 		@unassigned_instructors = instructors_without_squad
 		@unassigned_students = students_without_squad
 	end

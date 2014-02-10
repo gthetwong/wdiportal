@@ -4,6 +4,10 @@
 
 <%= button_to "New resource", new_resource_path, method: "get", class: "btn btn-warning" %> <br>
 
+<% if @resources.empty? %>
+	<p>No resources</p>
+<% else %>
+
 From students
 
 <table>
@@ -52,5 +56,7 @@ From instructors
 	<% end %>
 
 </table>
+
+<% end %>
 
 </div>

@@ -2,6 +2,10 @@
 
 <h2>New Squad</h2>
 
+<% if @instructors.empty? %>
+	<p>There are no instructors to assign to squads</p>
+<% else %>
+
 <%= form_for @squad, class: "form-group" do |f| %>
 	
     <% options = [] %>
@@ -27,6 +31,8 @@
 
 	    <%= f.submit "Create", :class => "btn btn-primary" %>
 	<% end %>
+
+<% end %>
 
 <% end %>
 

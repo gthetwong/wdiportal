@@ -4,6 +4,10 @@
 
 <%= button_to "New squad", new_squad_path, method: "get", class: "btn btn-warning" %> <br>
 
+<% if @squads.empty? %>
+	<p>No squads</p>
+<% else %>
+
 <table>
 
 	<% @squads.each do |f| %>
@@ -31,5 +35,7 @@
 </table><br>
 
 <%= button_to "Reset squads", reset_squads_path, :method => "get", :class => "btn btn-default", :confirm => "Resetting all squads will remove all students from all squads!\n\nThe squads will still exist and have their assigned instructors. To delete squads entirely, go to their individual edit pages." %>
+
+<% end %>
 
 </div>

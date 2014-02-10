@@ -14,13 +14,13 @@ class LabsController < ApplicationController
 		parameters["feeling"] = params[:feeling]
 		assignment = Assignment.find_by_id(params[:lab_assignment])
 
-		lab = Lab.create(parameters)
-		flash[:alert] = lab.errors.full_messages.first if lab.errors.any?
+		lab = current_user.labs.create(parameters)
+		flash[:alert] = "Error: " + lab.errors.full_messages.first if lab.errors.any?
 
 		assignment.labs << lab
 		current_user.labs << lab
 
-		redirect_to labs_path
+		redirect_to assignments_path
 	end
 
 	def edit
@@ -34,7 +34,7 @@ class LabsController < ApplicationController
 		updates["feeling"] = params[:feeling]
 		lab = Lab.find(id)
 		lab.update(updates)
-		flash[:alert] = lab.errors.full_messages.first if lab.errors.any?
+		flash[:alert] = "Error: " + lab.errors.full_messages.first if lab.errors.any?
 		redirect_to labs_path
 	end
 

@@ -2,6 +2,10 @@
 
 <h2>New Lab</h2>
 
+<% if @assignments.empty? %>
+    <p>There are no assignments to submit</p>
+<% else %>
+
 <%= form_for @lab, class: "form-group" do |f| %>
 
     <% options = [] %>
@@ -29,6 +33,8 @@
     <%= f.text_area :comment, class: "form-control" %> <br><br>
 
     <%= f.submit "Save", :class => "btn btn-primary" %>
+
+<% end %>
 
 <% end %>
 

@@ -4,6 +4,10 @@
 
 <%= button_to "New event", new_event_path, method: "get", class: "btn btn-warning" %> <br>
 
+<% if @events.empty? %>
+	<p>No events</p>
+<% else %>
+
 <table>
 
 	<% @events.each do |f| %>
@@ -37,5 +41,7 @@
 	<% end %>
 
 </table><br>
+
+<% end %>
 
 </div>

@@ -11,6 +11,7 @@ class AssignmentsController < ApplicationController
 	def create
 		parameters = params.require(:assignment).permit(:title, :url)
 		assignment = Assignment.create(parameters)
+		flash[:alert] = "Error: " + assignment.errors.full_messages.first if assignment.errors.any?
 		redirect_to assignments_path
 	end
 
@@ -24,6 +25,7 @@ class AssignmentsController < ApplicationController
 		updates = params.require(:assignment).permit(:title, :url)
 		assignment = Assignment.find(id)
 		assignment.update(updates)
+		flash[:alert] = "Error: " + assignment.errors.full_messages.first if assignment.errors.any?
 		redirect_to assignments_path
 	end
 
