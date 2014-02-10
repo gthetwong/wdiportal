@@ -46,4 +46,12 @@ class EventsController < ApplicationController
 		redirect_to events_path
 	end
 
+	def cancel_rsvp
+		id = params.require(:id)
+		event = Event.find(id)
+		event.users.delete(current_user)
+		flash[:notice] = "You are no longer attending #{event.title}"
+		redirect_to events_path
+	end
+
 end

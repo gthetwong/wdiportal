@@ -14,6 +14,7 @@ Wdiportal::Application.routes.draw do
   patch "/users/:id/role", to: "users#change_role", as: :change_role
 
   get "/events/:id/rsvp", to: "events#rsvp", as: :rsvp
+  get "/events/:id/cancel", to: "events#cancel_rsvp", as: :cancel_rsvp
 
   get "/resetsquads", to: "squads#reset", as: :reset_squads
 
@@ -27,5 +28,6 @@ Wdiportal::Application.routes.draw do
   get "/users", to: "users#index"
 
   get "/projects/:id/join", to: "projects#join", as: :join_project
+  get "/projects/:id/leave", to: "projects#leave", as: :leave_project
 
 end

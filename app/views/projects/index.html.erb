@@ -20,8 +20,12 @@
 	      		<% end %>
 			</td>
 			<td>
-	      		<%= button_to "Join", join_project_path(f), :method => "get", :class => "btn btn-default" %>
-			</td>
+	      		<% if current_user.projects.include?(f) %>
+		      		<%= button_to "Leave", leave_project_path(f), :method => "get", :class => "btn btn-default" %>
+		      	<% else %>
+		      		<%= button_to "Join", join_project_path(f), :method => "get", :class => "btn btn-default" %>
+		      	<% end %>
+		    </td>
 			<td>
 	      		<%= button_to "Edit", edit_project_path(f), :method => "get", :class => "btn btn-default" %>
 			</td>

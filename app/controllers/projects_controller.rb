@@ -39,10 +39,22 @@ class ProjectsController < ApplicationController
 		id = params.require(:id)
 		project = Project.find(id)
 		if project.users.include?(current_user)
-			flash[:notice] = "You're already working on #{project.title}!"
+			flash[:notice] = "You're already working on {project.title}!"
 		else
 			project.users << current_user
-			flash[:notice] = "Good luck working on #{project.title}!"
+			flash[:notice] = "Good luck working on {project.title}!"
+		end
+		redirect_to projects_path
+	end
+
+	def leave
+		id = params.require(:id)
+		project = Project.find(id)
+		if project.users.include?(current_user)
+			project.users.delete(current_user)
+			flash[:notice] = "You are no longer working on #{project.title}"
+		else
+			flash[:notice] = "You weren't working on #{project.title}"
 		end
 		redirect_to projects_path
 	end

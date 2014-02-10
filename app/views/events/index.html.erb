@@ -20,7 +20,11 @@
 	      		$<%= f.cost %>
 	      	</td>
 	      	<td>
-	      		<%= button_to "Attend", rsvp_path(f), :method => "get", :class => "btn btn-default" %>
+	      		<% if current_user.events.include?(f) %>
+		      		<%= button_to "Cancel", cancel_rsvp_path(f), :method => "get", :class => "btn btn-default" %>
+		      	<% else %>
+		      		<%= button_to "Attend", rsvp_path(f), :method => "get", :class => "btn btn-default" %>
+		      	<% end %>
 			</td>
 	      	<td>
 	      		<%= button_to "Students attending", event_path(f), :method => "get", :class => "btn btn-default" %>
