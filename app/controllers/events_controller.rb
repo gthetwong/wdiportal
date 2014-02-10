@@ -45,4 +45,5 @@ class EventsController < ApplicationController
 		flash[:notice] = "You are attending #{event.title}!"
 		redirect_to events_path
 	end
+
 end
