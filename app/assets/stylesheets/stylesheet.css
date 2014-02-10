@@ -3,7 +3,21 @@ body {
 }
 
 h1 {
-	font-size: 70px;
+	font-size: 87px;
+	margin: 40px auto 30px auto;
+	font-family: 'PT Sans Narrow', 'Arial narrow', Arial, sans-serif;
+	font-weight: 700;
+}
+
+h2 {
+	font-family: 'Source Sans Pro', sans-serif;
+	font-size: 31px;
+	margin: 45px auto 20px auto;
+}
+
+.navbar a {
+	font-family: 'Source Sans Pro', sans-serif;
+	font-size: 17px;
 }
 
 a, a:hover {
@@ -20,19 +34,27 @@ table td {
 	padding: 20px;
 }
 
+div > form {
+	width: 300px;
+}
+
 .center {
 	float: none;
 	margin: 0 auto;
 }
 
 .small {
-	width: 400px;
+	width: 350px;
 }
 
 .medium {
-	width: 550px;
+	width: 600px;
 }
 
 .large {
-	width: 600px;
+	width: 900px;
+}
+
+.squad table {
+	min-width: 300px;
 }

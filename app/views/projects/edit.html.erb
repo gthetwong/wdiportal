@@ -23,3 +23,13 @@
 <%= button_to "Delete project", project_path(@project), :method => "delete", :class => "btn btn-default" %>
 
 </div>
+
+<script>
+
+var divwidth = $( "form" ).width();
+
+$(document).ready(function(){
+    $( "div.project" ).css({width: divwidth});
+})
+
+</script>

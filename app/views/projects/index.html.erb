@@ -1,4 +1,4 @@
-<div class="project center small">
+<div class="project center medium">
 
 <h2>Projects</h2>
 
@@ -42,3 +42,13 @@
 <% end %>
 
 </div>
+
+<script>
+
+var divwidth = $( "table" ).width();
+
+$(document).ready(function(){
+    $( "div.project" ).css({width: divwidth});
+})
+
+</script>

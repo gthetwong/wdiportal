@@ -1,8 +1,10 @@
-<div class="event center small">
+<div class="user center small">
 
 <h2><%= @user.firstname %> <%= @user.lastname %></h2>
 
 <%= @user.email %> <br><br>
+
+<button class="btn btn-default"><a href="/users/sign_out">Sign Out</a></button>
 
 <h3>Events</h3>
 
@@ -39,3 +41,15 @@
 <%= @instructor %>
 
 </div>
+
+<script>
+
+var divwidth = $( "table" ).width();
+
+$(document).ready(function(){
+	if divwidth < 300 {
+    	$( "div.user" ).css({width: divwidth});
+	};
+})
+
+</script>

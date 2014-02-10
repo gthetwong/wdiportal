@@ -2,6 +2,11 @@
 <html>
 <head>
   <title>WDI Portal</title>
+  <link href='http://fonts.googleapis.com/css?family=PT+Sans+Narrow:400,700' rel='stylesheet' type='text/css'>
+  <link href='http://fonts.googleapis.com/css?family=Cabin' rel='stylesheet' type='text/css'>
+  <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600' rel='stylesheet' type='text/css'>
+  <link href='http://fonts.googleapis.com/css?family=Noto+Sans:400,700' rel='stylesheet' type='text/css'>
+  <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,600' rel='stylesheet' type='text/css'>
   <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
   <%= csrf_meta_tags %>
@@ -12,26 +17,16 @@
 
 	<div class="row text-center">
 
-<a href="/users/sign_in">Sign In</a>
-<a href="/users/sign_up">Sign Up</a>
-<a href="/users/sign_out">Sign Out</a>
+		<h1>WDI PORTAL</h1>
 
-		<h1>WDI NOTES</h1>
+		<%= render partial: "/layouts/navbar" if user_signed_in? %>
 
-		<div class="btn-group btn-group-lg">
-			<%= link_to "Gists", "/gists", :class => "btn btn-default" %>
-		  	<%= link_to "Resources", "/resources", :class => "btn btn-default" %>
-		  	<%= link_to "Assignments", "/assignments", :class => "btn btn-default" %>
-		  	<%= link_to "Labs", "/labs", :class => "btn btn-default" %>
-		  	<%= link_to "Projects", "/projects", :class => "btn btn-default" %>
-		  	<%= link_to "Squads", "/squads", :class => "btn btn-default" %>
-		  	<%= link_to "Events", "/events", :class => "btn btn-default" %>
-		  	<%= link_to "Students", "/users", :class => "btn btn-default" %>
-		  	<%= link_to "Users", "/users", :class => "btn btn-default" %>
-		</div>
-
-		<p class="notice"><%= notice %></p>
-		<p class="alert"><%= alert %></p>
+		<% if !notice.nil? %>
+			<p class="notice"><%= notice %></p>
+		<% end %>
+		<% if !alert.nil? %>
+			<p class="alert"><%= alert %></p>
+		<% end %>
 
 	</div>
 
@@ -40,5 +35,3 @@
 </div>
 </body>
 </html>
-
-

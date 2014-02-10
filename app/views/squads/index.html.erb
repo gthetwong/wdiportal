@@ -1,4 +1,4 @@
-<div class="squad center medium">
+<div class="squad center small">
 
 <h2>Squads</h2>
 
@@ -39,3 +39,13 @@
 <% end %>
 
 </div>
+
+<script>
+
+var divwidth = $( "table" ).width();
+
+$(document).ready(function(){
+    $( "div.squad" ).css({width: divwidth});
+})
+
+</script>

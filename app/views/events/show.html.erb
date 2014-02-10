@@ -13,3 +13,15 @@
 <% end %>
 
 </div>
+
+<script>
+
+var divwidth = $( "table" ).width();
+
+$(document).ready(function(){
+    if divwidth < 300 {
+        $( "div.event" ).css({width: divwidth});
+    };
+})
+
+</script>

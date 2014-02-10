@@ -10,7 +10,7 @@
 	    <% @assigned_students.each do |student| %>
 	    	<tr>
 	   			<td><%= student.firstname %></td>
-	   			<td><button><%= link_to "Remove", "/remove/#{student.id}/from/#{@squad.id}" %></button></td>
+	   			<td><button class="btn btn-default"><%= link_to "Remove", "/remove/#{student.id}/from/#{@squad.id}" %></button></td>
 	   		</tr>
 	    <% end %> <br>
     </table>
@@ -20,7 +20,7 @@
         <% @unassigned_students.each do |student| %>
 	    	<tr>
 	   			<td><%= student.firstname %></td>
-	   			<td><button><%= link_to "Add", "/add/#{student.id}/to/#{@squad.id}" %></button></td>
+	   			<td><button class="btn btn-default"><%= link_to "Add", "/add/#{student.id}/to/#{@squad.id}" %></button></td>
 	   		</tr>
 	    <% end %>
 	</table> <br><br>
@@ -32,3 +32,13 @@
 <%= button_to "Delete squad", squad_path(@squad), :method => "delete", :class => "btn btn-default" %>
 
 </div>
+
+<script>
+
+var divwidth = $( "form" ).width();
+
+$(document).ready(function(){
+    $( "div.squad" ).css({width: divwidth});
+})
+
+</script>

@@ -1,4 +1,4 @@
-<div class="lab center large">
+<div class="lab center medium">
 
 <h2>Labs</h2>
 
@@ -35,3 +35,13 @@
 <% end %>
 
 </div>
+
+<script>
+
+var divwidth = $( "table" ).width();
+
+$(document).ready(function(){
+    $( "div.lab" ).css({width: divwidth});
+})
+
+</script>

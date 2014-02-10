@@ -60,3 +60,17 @@ From instructors
 <% end %>
 
 </div>
+
+<script>
+
+var divwidth = $( "table" ).width();
+
+$(document).ready(function(){
+	if divwidth > 300 {
+    	$( "div.resource" ).css({width: divwidth});
+    } else {
+		$( "div.resource" ).css({width: 300});
+    };
+})
+
+</script>

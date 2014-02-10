@@ -17,3 +17,13 @@
 <%= button_to "Delete assignment", assignment_path(@assignment), :method => "delete", :class => "btn btn-default" %>
 
 </div>
+
+<script>
+
+var divwidth = $( "form" ).width();
+
+$(document).ready(function(){
+    $( "div.assignment" ).css({width: divwidth});
+})
+
+</script>
