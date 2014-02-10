@@ -13,20 +13,20 @@ one = User.create(firstname: "One", lastname: "Student", email: "student1@email.
 two = User.create(firstname: "Two", lastname: "Student", email: "student2@email.com", password: "password", password_confirmation: "password")
 three = User.create(firstname: "Three", lastname: "Student", email: "student3@email.com", password: "password", password_confirmation: "password")
 
-one.assignments.create(title: "Animal Shelter", url: "http://google.com")
-Assignment.create(title: "OMDB App", url: "http://google.com")
+n.assignments.create(title: "Animal Shelter", url: "http://google.com")
+n.assignments.create(title: "OMDB App", url: "http://google.com")
 
-Event.create(title: "Bowling", date: Date.today, time: Time.now, location: "414 Brannan St", description: "Beer", cost: 0)
-Event.create(title: "Rock Climbing", date: Date.today, time: Time.now, location: "50 Fulton St", description: "Climbing rocks", cost: 5)
+c.events.create(title: "Bowling", date: Date.today, time: Time.now, location: "414 Brannan St", description: "Beer", cost: 0)
+c.events.create(title: "Rock Climbing", date: Date.today, time: Time.now, location: "50 Fulton St", description: "Climbing rocks", cost: 5)
 
-Gist.create(title: "User Authentication", url: "http://google.com")
-Gist.create(title: "Ruby Controller", url: "http://google.com")
+n.gists.create(title: "User Authentication", url: "http://google.com")
+n.gists.create(title: "Ruby Controller", url: "http://google.com")
 
-Lab.create(url: "http://google.com", comment: "This was hard.", feeling: "I'm not sure")
-Lab.create(url: "http://google.com", comment: "This wasn't too bad.", feeling: "I did well")
+one.labs.create(url: "http://google.com", comment: "This was hard.", feeling: "I'm not sure")
+two.labs.create(url: "http://google.com", comment: "This wasn't too bad.", feeling: "I did well")
 
-Project.create(title: "Synapse", url: "http://google.com", technology: "Pubmed API", description: "Find articles")
-Project.create(title: "Cinderella", url: "http://google.com", technology: "Zappos API", description: "Find shoes that fit")
+one.projects.create(title: "Synapse", url: "http://google.com", technology: "Pubmed API", description: "Find articles")
+three.projects.create(title: "Cinderella", url: "http://google.com", technology: "Zappos API", description: "Find shoes that fit")
 
-Resource.create(title: "Buttons", url: "http://google.com", description: "Make buttons")
-Resource.create(title: "Formbuilder", url: "http://google.com", description: "Make forms in bootstrap")
+three.resources.create(title: "Buttons", url: "http://google.com", description: "Make buttons")
+n.resources.create(title: "Formbuilder", url: "http://google.com", description: "Make forms in bootstrap")
