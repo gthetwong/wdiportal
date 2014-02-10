@@ -4,13 +4,30 @@
 
 <%= form_for @squad, class: "form-group" do |f| %>
 
-    <label>Title</label> <br>
+    <h3><%= squad_instructor(@squad).first.firstname %></h3>
 
+    <table>
+	    <% @assigned_students.each do |student| %>
+	    	<tr>
+	   			<td><%= student.firstname %></td>
+	   			<td><button><%= link_to "Remove", "/remove/#{student.id}/from/#{@squad.id}" %></button></td>
+	   		</tr>
+	    <% end %> <br>
+    </table>
 
+    <h4>Unassigned students</h4>
+    <table>
+        <% @unassigned_students.each do |student| %>
+	    	<tr>
+	   			<td><%= student.firstname %></td>
+	   			<td><button><%= link_to "Add", "/add/#{student.id}/to/#{@squad.id}" %></button></td>
+	   		</tr>
+	    <% end %>
+	</table> <br><br>
 
     <%= f.submit "Save changes", :class => "btn btn-primary" %>
 
-<% end %> <br>
+<% end %> <br><br>
 
 <%= button_to "Delete squad", squad_path(@squad), :method => "delete", :class => "btn btn-default" %>
 

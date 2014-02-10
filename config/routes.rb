@@ -4,8 +4,11 @@ Wdiportal::Application.routes.draw do
 
   root :to => "site#home"
 
-  get "site/home", to: "site#home"
-  get "site/about", to: "site#about"
+  get "/site/home", to: "site#home"
+  get "/site/about", to: "site#about"
+
+  get "/remove/:student/from/:squad", to: "squads#remove_student"
+  get "/add/:student/to/:squad", to: "squads#add_student"
 
   get "/users/:id/role", to: "users#form", as: :role_form
   patch "/users/:id/role", to: "users#change_role", as: :change_role

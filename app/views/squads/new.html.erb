@@ -3,29 +3,29 @@
 <h2>New Squad</h2>
 
 <%= form_for @squad, class: "form-group" do |f| %>
-
+	
     <% options = [] %>
-    <% @instructors.each do |instructor| %>
-    	<% if instructor.squad.nil? %>
-    		<% instructor_array = [instructor.firstname, instructor.id] %>
-    		<% options << instructor_array %>
-    	<% end %>
+    <% @unassigned_instructors.each do |instructor| %>
+		<% instructor_array = [instructor.firstname, instructor.id] %>
+		<% options << instructor_array %>
     <% end %>
+
     <% if options.empty? %>
     	All instructors have already been assigned to a squad.
     <% else %>
+
 	    <label>Select squad instructor</label> <br>
     	<%= select_tag(:squad_instructor, options_for_select(options)) %> <br><br>
 
 	    <label>Select unassigned students to add</label> <br>
 
-		<% @students.each do |s| %>
-			<%= check_box("squad_students", "add", {:multiple => true}, s.id, nil) %>
-			<%= label_tag s.firstname %> <br>
+		<% @unassigned_students.each do |student| %>
+			<%= check_box("squad_students", "add", {:multiple => true}, student.id, nil) %>
+			<%= label_tag student.firstname %> <br>
 		<% end %> <br>
 
 	    <%= f.submit "Create", :class => "btn btn-primary" %>
-	  <% end %>
+	<% end %>
 
 <% end %>
 

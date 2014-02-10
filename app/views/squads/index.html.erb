@@ -14,12 +14,12 @@
 	      		<%= squad_instructor(f).first.firstname %> <br><br>
 			
 	      		<% if squad_students(f).empty? %>
-	      			No students assigned<br>
+	      			No students assigned<br><br>
 	      		<% else %>
 				    Students <br>
 		      		<% squad_students(f).each do |student| %>
 		      			<%= student.firstname %> <br>
-		      		<% end %> <br><br>
+		      		<% end %> <br>
 		      	<% end %>
 
 				<%= button_to "Edit", edit_squad_path(f), :method => "get", :class => "btn btn-default" %>

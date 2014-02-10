@@ -8,8 +8,8 @@ class SquadsController < ApplicationController
 
 	def new
 		@squad = Squad.new
-		@instructors = instructors
-		@students = students
+		@unassigned_instructors = instructors_without_squad
+		@unassigned_students = students_without_squad
 	end
 
 	def show
@@ -28,57 +28,27 @@ class SquadsController < ApplicationController
 		redirect_to squads_path
 	end
 
-# def update
-# 	id = params[:id]
-# 	updates = params.require(:product).permit(:name, :description)
-# 	product = Product.find(id)
-# 	product.update(updates)
-
-# 	unless params[:categories].nil?
-# 		add_categories = []
-# 		remove_categories = []
-
-# 		unless params[:categories]["add"].nil?
-# 			params[:categories]["add"].each do |category|
-# 				category_object = Category.where :name => category
-# 				add_categories << category_object
-# 			end
-# 		end
-
-# 		unless params[:categories]["remove"].nil?
-# 			params[:categories]["remove"].each do |category|
-# 				category_object = Category.where :name => category
-# 				remove_categories << category_object
-# 			end
-# 		end
-
-# 		product.categories << add_categories
-# 		product.categories.destroy(remove_categories)
-# 	end
-
-# 	redirect_to product
-# end
-
-
-
-
-
 	def edit
 		id = params.require(:id)
 		@squad = Squad.find(id)
+		@assigned_students = squad_students(@squad)
+		@unassigned_students = students_without_squad - @assigned_students
 	end
 
 	def update
-		id = params.require(:id)
-		updates = params.require(:squad).permit(:title, :date, :location, :cost, :description)
-		squad = Squad.find(id)
-		squad.update(updates)
 		redirect_to squads_path
 	end
 
 	def destroy
 		id = params[:id]
-		Squad.destroy(id)
+		squad = Squad.find_by_id(id)
+		users = squad.users
+
+		users.each do |user|
+			user.update_attribute(:squad_id, nil)
+		end
+
+		squad.destroy
 		redirect_to squads_path
 	end
 
@@ -89,6 +59,28 @@ class SquadsController < ApplicationController
 			squad.users = instructor
 		end
 		redirect_to squads_path
+	end
+
+	def add_student
+		student_id = params[:student]
+		squad_id = params[:squad]
+		student = User.find_by_id(student_id)
+		squad = Squad.find_by_id(squad_id)
+
+		squad.users << student
+
+		redirect_to edit_squad_path(squad)
+	end
+
+	def remove_student
+		student_id = params[:student]
+		squad_id = params[:squad]
+		student = User.find_by_id(student_id)
+		squad = Squad.find_by_id(squad_id)
+
+		squad.users.delete(student)
+
+		redirect_to edit_squad_path(squad)
 	end
 
 end
