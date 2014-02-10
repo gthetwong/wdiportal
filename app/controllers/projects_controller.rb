@@ -11,6 +11,7 @@ class ProjectsController < ApplicationController
 	def create
 		parameters = params.require(:project).permit(:title, :url, :technology, :description)
 		project = Project.create(parameters)
+		flash[:alert] = project.errors.full_messages.first if project.errors.any?
 		redirect_to projects_path
 	end
 
@@ -24,6 +25,7 @@ class ProjectsController < ApplicationController
 		updates = params.require(:project).permit(:title, :url, :technology, :description)
 		project = Project.find(id)
 		project.update(updates)
+		flash[:alert] = project.errors.full_messages.first if project.errors.any?
 		redirect_to projects_path
 	end
 

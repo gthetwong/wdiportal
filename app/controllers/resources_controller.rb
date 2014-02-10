@@ -11,6 +11,7 @@ class ResourcesController < ApplicationController
 	def create
 		parameters = params.require(:resource).permit(:title, :url, :description)
 		resource = Resource.create(parameters)
+		flash[:alert] = resource.errors.full_messages.first if resource.errors.any?
 		redirect_to resources_path
 	end
 
@@ -24,6 +25,7 @@ class ResourcesController < ApplicationController
 		updates = params.require(:resource).permit(:title, :url, :description)
 		resource = Resource.find(id)
 		resource.update(updates)
+		flash[:alert] = resource.errors.full_messages.first if resource.errors.any?
 		redirect_to resources_path
 	end
 

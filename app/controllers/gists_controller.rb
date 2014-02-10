@@ -16,6 +16,7 @@ class GistsController < ApplicationController
 	def create
 		parameters = params.require(:gist).permit(:title, :url)
 		gist = Gist.create(parameters)
+		flash[:alert] = gist.errors.full_messages.first if gist.errors.any?
 		redirect_to gists_path
 	end
 
@@ -29,6 +30,7 @@ class GistsController < ApplicationController
 		updates = params.require(:gist).permit(:title, :url)
 		gist = Gist.find(id)
 		gist.update(updates)
+		flash[:alert] = gist.errors.full_messages.first if gist.errors.any?
 		redirect_to gists_path
 	end
 
