@@ -56,16 +56,17 @@
 
 <% if @user.squad.nil? %>
 	<p>You have not been assigned to a squad yet</p>
-<% end %>
-
-<% if current_user.role == "student" %>
-	<%= @instructor %>
 <% else %>
-	<% if @students.nil? %>
-		<p>No students</p>
+
+	<% if current_user.role == "student" %>
+		<%= @instructor %>
 	<% else %>
-		<% @students.each do |student| %>
-			<%= student.firstname %> <%= student.lastname %> <br>
+		<% if @students.nil? %>
+			<p>No students</p>
+		<% else %>
+			<% @students.each do |student| %>
+				<%= student.firstname %> <%= student.lastname %> <br>
+			<% end %>
 		<% end %>
 	<% end %>
 <% end %>
