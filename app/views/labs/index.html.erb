@@ -6,12 +6,14 @@
 
 <% if @labs.empty? %>
 	<p>No labs</p>
-<% else %>
+<% elsif current_user.role == "student" %>
 
 <table>
 
 	<% @labs.each do |f| %>
-	
+
+		<% if current_user.labs.include? (f) %>
+
 		<tr>
 			<td>
 	      		<%= f.assignment.title %>
@@ -27,7 +29,35 @@
 	      		<%= button_to "Edit", edit_lab_path(f), :method => "get", :class => "btn btn-default" %>
 			</td>
     	</tr>
- 
+
+    	<% end %>
+
+<% end %>
+
+</table><br>
+
+<% else %>
+
+<table>
+
+	<% @labs.each do |f| %>
+
+		<tr>
+			<td>
+	      		<%= f.assignment.title %>
+	      	</td>
+			<td>
+	      		<%= link_to "#{f.user.firstname} #{f.user.lastname}", "#{f.url}", :target => "_blank" %> <br>
+	      	</td>
+	    	<td>
+	      		<%= f.feeling %> <br>
+	      		<%= f.comment %>
+			</td>
+			<td>
+	      		<%= button_to "Edit", edit_lab_path(f), :method => "get", :class => "btn btn-default" %>
+			</td>
+    	</tr>
+
 	<% end %>
 
 </table><br>

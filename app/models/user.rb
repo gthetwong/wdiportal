@@ -17,6 +17,9 @@ class User < ActiveRecord::Base
   
   belongs_to :squad
 
+  def self.student
+    puts "Yes"
+  end
 
 end
 

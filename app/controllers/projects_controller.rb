@@ -18,12 +18,20 @@ class ProjectsController < ApplicationController
 	def edit
 		id = params.require(:id)
 		@project = Project.find(id)
+		if !@project.users.include? (current_user)
+			flash[:alert] = "This is not your project!"
+			redirect_to :projects
+		end
 	end
 
 	def update
 		id = params.require(:id)
 		updates = params.require(:project).permit(:title, :url, :technology, :description)
 		project = Project.find(id)
+		if !project.users.include? (current_user)
+			flash[:alert] = "This is not your project!"
+			redirect_to :projects
+		end
 		project.update(updates)
 		flash[:alert] = "Error: " + project.errors.full_messages.first if project.errors.any?
 		redirect_to projects_path
@@ -31,7 +39,12 @@ class ProjectsController < ApplicationController
 
 	def destroy
 		id = params[:id]
-		Project.destroy(id)
+		project = Project.find_by_id(id)
+		if !project.users.include? (current_user)
+			flash[:alert] = "This is not your project!"
+			redirect_to :projects
+		end
+		project.destroy(id)
 		redirect_to projects_path
 	end
 

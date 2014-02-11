@@ -10,6 +10,10 @@ class LabsController < ApplicationController
 	end
 
 	def create
+		if current_user.role != "student"
+			flash[:alert] = "You must be a student to submit a lab"
+			redirect_to :labs
+		end
 		parameters = params.require(:lab).permit(:url, :comment)
 		parameters["feeling"] = params[:feeling]
 		assignment = Assignment.find_by_id(params[:lab_assignment])
@@ -24,11 +28,19 @@ class LabsController < ApplicationController
 	end
 
 	def edit
+		if current_user.role != "student"
+			flash[:alert] = "You must be a student"
+			redirect_to :labs
+		end
 		id = params.require(:id)
 		@lab = Lab.find(id)
 	end
 
 	def update
+		if current_user.role != "student"
+			flash[:alert] = "You must be a student"
+			redirect_to :labs
+		end
 		id = params.require(:id)
 		updates = params.require(:lab).permit(:url, :comment)
 		updates["feeling"] = params[:feeling]
@@ -39,6 +51,10 @@ class LabsController < ApplicationController
 	end
 
 	def destroy
+		if current_user.role != "student"
+			flash[:alert] = "You must be a student"
+			redirect_to :labs
+		end
 		id = params[:id]
 		Lab.destroy(id)
 		redirect_to labs_path

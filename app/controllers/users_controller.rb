@@ -8,14 +8,25 @@ class UsersController < ApplicationController
 		id = params.require(:id)
 		@user = User.find(id)
 		@instructor = @user.squad.users.where(:role => "instructor").first.firstname unless @user.squad.nil?
+		unless ( current_user.role == "instructor" || current_user.role == "coordinator" || @user == current_user )
+			redirect_to users_path
+		end
 	end
 
 	def form
+		if current_user.role != "coordinator"
+			flash[:alert] = "You must be a coordinator to change a user's role"
+			redirect_to :users
+		end
 		id = params.require(:id)
 		@user = User.find(id)
 	end
 
 	def change_role
+		if current_user.role != "coordinator"
+			flash[:alert] = "You must be a coordinator to change a user's role"
+			redirect_to :users
+		end
 		id = params.require(:id)
 		update = params.require(:role)
 		user = User.find(id)

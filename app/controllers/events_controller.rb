@@ -5,6 +5,10 @@ class EventsController < ApplicationController
 	end
 
 	def new
+		if current_user.role != "coordinator"
+			flash[:alert] = "You must be a coordinator"
+			redirect_to :events
+		end
 		@event = Event.new
 	end
 
@@ -14,6 +18,10 @@ class EventsController < ApplicationController
 	end
 
 	def create
+		if current_user.role != "coordinator"
+			flash[:alert] = "You must be a coordinator"
+			redirect_to :events
+		end
 		parameters = params.require(:event).permit(:title, :date, :time, :location, :cost, :description)
 		event = Event.create(parameters)
 		flash[:alert] = "Error: " + event.errors.full_messages.first if event.errors.any?
@@ -21,11 +29,19 @@ class EventsController < ApplicationController
 	end
 
 	def edit
+		if current_user.role != "coordinator"
+			flash[:alert] = "You must be a coordinator"
+			redirect_to :events
+		end
 		id = params.require(:id)
 		@event = Event.find(id)
 	end
 
 	def update
+		if current_user.role != "coordinator"
+			flash[:alert] = "You must be a coordinator"
+			redirect_to :events
+		end
 		id = params.require(:id)
 		updates = params.require(:event).permit(:title, :date, :time, :location, :cost, :description)
 		event = Event.find(id)
@@ -35,6 +51,10 @@ class EventsController < ApplicationController
 	end
 
 	def destroy
+		if current_user.role != "coordinator"
+			flash[:alert] = "You must be a coordinator"
+			redirect_to :events
+		end
 		id = params.require(:id)
 		Event.destroy(id)
 		redirect_to events_path

@@ -6,12 +6,40 @@
 
 <% if @squads.empty? %>
 	<p>No squads</p>
+<% elsif current_user.role != "coordinator" %>
+<table>
+
+<% f = current_user.squad %>
+
+
+		<tr>
+	    	<td>
+	    		Instructor <br>
+	      		<%= squad_instructor(f).first.firstname %> <br><br>
+			
+	      		<% if squad_students(f).empty? %>
+	      			No students assigned<br><br>
+	      		<% else %>
+				    Students <br>
+		      		<% squad_students(f).each do |student| %>
+		      			<%= student.firstname %> <br>
+		      		<% end %> <br>
+		      	<% end %>
+		    </td>
+		    <td>
+				<%= button_to "Edit", edit_squad_path(f), :method => "get", :class => "btn btn-default" %>
+			</td>
+    	</tr>
+ 
+
+</table>
+
 <% else %>
 
 <table>
 
 	<% @squads.each do |f| %>
-	
+
 		<tr>
 	    	<td>
 	    		Instructor <br>
@@ -35,9 +63,12 @@
 
 </table><br>
 
+<% if current_user.role == "coordinator" %>
 <%= button_to "Reset squads", reset_squads_path, :method => "get", :class => "btn btn-default", :confirm => "Resetting all squads will remove all students from all squads!\n\nThe squads will still exist and have their assigned instructors. To delete squads entirely, go to their individual edit pages." %>
 
 <% end %>
+<% end %>
+
 
 </div>
 
