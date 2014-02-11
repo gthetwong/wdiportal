@@ -13,6 +13,9 @@
 
 ActiveRecord::Schema.define(version: 20140210042705) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "assignments", force: true do |t|
     t.string   "title"
     t.string   "url"
@@ -21,7 +24,7 @@ ActiveRecord::Schema.define(version: 20140210042705) do
     t.integer  "user_id"
   end
 
-  add_index "assignments", ["user_id"], name: "index_assignments_on_user_id"
+  add_index "assignments", ["user_id"], name: "index_assignments_on_user_id", using: :btree
 
   create_table "attends", force: true do |t|
     t.integer  "user_id"
@@ -30,8 +33,8 @@ ActiveRecord::Schema.define(version: 20140210042705) do
     t.datetime "updated_at"
   end
 
-  add_index "attends", ["event_id"], name: "index_attends_on_event_id"
-  add_index "attends", ["user_id"], name: "index_attends_on_user_id"
+  add_index "attends", ["event_id"], name: "index_attends_on_event_id", using: :btree
+  add_index "attends", ["user_id"], name: "index_attends_on_user_id", using: :btree
 
   create_table "events", force: true do |t|
     t.string   "title"
@@ -52,7 +55,7 @@ ActiveRecord::Schema.define(version: 20140210042705) do
     t.integer  "user_id"
   end
 
-  add_index "gists", ["user_id"], name: "index_gists_on_user_id"
+  add_index "gists", ["user_id"], name: "index_gists_on_user_id", using: :btree
 
   create_table "group_projects", force: true do |t|
     t.integer  "user_id"
@@ -61,8 +64,8 @@ ActiveRecord::Schema.define(version: 20140210042705) do
     t.datetime "updated_at"
   end
 
-  add_index "group_projects", ["project_id"], name: "index_group_projects_on_project_id"
-  add_index "group_projects", ["user_id"], name: "index_group_projects_on_user_id"
+  add_index "group_projects", ["project_id"], name: "index_group_projects_on_project_id", using: :btree
+  add_index "group_projects", ["user_id"], name: "index_group_projects_on_user_id", using: :btree
 
   create_table "labs", force: true do |t|
     t.string   "url"
@@ -74,8 +77,8 @@ ActiveRecord::Schema.define(version: 20140210042705) do
     t.integer  "assignment_id"
   end
 
-  add_index "labs", ["assignment_id"], name: "index_labs_on_assignment_id"
-  add_index "labs", ["user_id"], name: "index_labs_on_user_id"
+  add_index "labs", ["assignment_id"], name: "index_labs_on_assignment_id", using: :btree
+  add_index "labs", ["user_id"], name: "index_labs_on_user_id", using: :btree
 
   create_table "projects", force: true do |t|
     t.string   "title"
@@ -95,7 +98,7 @@ ActiveRecord::Schema.define(version: 20140210042705) do
     t.integer  "user_id"
   end
 
-  add_index "resources", ["user_id"], name: "index_resources_on_user_id"
+  add_index "resources", ["user_id"], name: "index_resources_on_user_id", using: :btree
 
   create_table "sites", force: true do |t|
     t.string   "home"
@@ -128,8 +131,8 @@ ActiveRecord::Schema.define(version: 20140210042705) do
     t.integer  "squad_id"
   end
 
-  add_index "users", ["email"], name: "index_users_on_email", unique: true
-  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
-  add_index "users", ["squad_id"], name: "index_users_on_squad_id"
+  add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
+  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
+  add_index "users", ["squad_id"], name: "index_users_on_squad_id", using: :btree
 
 end

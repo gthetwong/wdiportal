@@ -1,5 +1,7 @@
 require File.expand_path('../boot', __FILE__)
 
+config.paths['app/views'] << "app/views/devise"
+
 require 'rails/all'
 
 # Require the gems listed in Gemfile, including any gems
