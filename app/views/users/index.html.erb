@@ -14,9 +14,11 @@
 			<td>
 	      		<%= user.role %>
 			</td>
+			<% if current_user.role == "coordinator" %>
 			<td>
 	      		<%= button_to "Change role", role_form_path(user), :method => "get", :class => "btn btn-default" %>
 			</td>
+			<% end %>
     	</tr>
  
 	<% end %>

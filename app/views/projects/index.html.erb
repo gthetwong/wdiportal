@@ -25,6 +25,7 @@
 	      			<%= user.firstname %> <br>
 	      		<% end %>
 			</td>
+			<% if current_user.role == "student" %>
 			<td>
 	      		<% if current_user.projects.include?(f) %>
 		      		<%= button_to "Leave", leave_project_path(f), :method => "get", :class => "btn btn-default" %>
@@ -32,6 +33,7 @@
 		      		<%= button_to "Join", join_project_path(f), :method => "get", :class => "btn btn-default" %>
 		      	<% end %>
 		    </td>
+		    <% end %>
 			<td>
 	      		<%= ( button_to "Edit", edit_project_path(f), :method => "get", :class => "btn btn-default" ) if ( current_user.projects.include?(f) )%>
 			</td>

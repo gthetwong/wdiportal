@@ -1,5 +1,9 @@
 <div class="lab center medium">
 
+<% if @assignment.nil %>
+	<p>No submissions</p>
+<% else %>
+
 <h2>Submissions for <%= @assignment.title %></h2>
 
 <% if @assignment.labs.empty? %>
@@ -55,6 +59,8 @@
 <% end %>
 
 </table>
+
+<% end %>
 
 <% end %>
 
