@@ -2,7 +2,9 @@
 
 <h2>Labs</h2>
 
-<%= button_to "Submit a lab", new_lab_path, method: "get", class: "btn btn-warning" %> <br>
+<% if current_user.role == "student" %>
+	<%= button_to "Submit a lab", new_lab_path, method: "get", class: "btn btn-warning" %> <br>
+<% end %>
 
 <% if @labs.empty? %>
 	<p>No labs</p>
@@ -25,9 +27,11 @@
 	      		<%= f.feeling %> <br>
 	      		<%= f.comment %>
 			</td>
-			<td>
-	      		<%= button_to "Edit", edit_lab_path(f), :method => "get", :class => "btn btn-default" %>
-			</td>
+			<% if current_user.role == "student" %>
+				<td>
+		      		<%= button_to "Edit", edit_lab_path(f), :method => "get", :class => "btn btn-default" %>
+				</td>
+			<% end %>
     	</tr>
 
     	<% end %>

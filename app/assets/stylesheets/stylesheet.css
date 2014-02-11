@@ -21,6 +21,11 @@ h2 {
 	font-size: 17px;
 }
 
+.navbar a:hover {
+	background-color: #F2F8FA;
+	border-color: #cccccc;
+}
+
 a, a:hover {
 	color: Black;
 }
@@ -74,4 +79,9 @@ div > form {
 
 .squad table {
 	min-width: 300px;
+}
+
+.alert, .notice {
+	color: #A30000;
+	margin-bottom: -20px;
 }

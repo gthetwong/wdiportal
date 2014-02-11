@@ -6,6 +6,8 @@
 
 <a href="/users/sign_out"><button class="btn btn-default">Sign Out</button></a>
 
+<% unless current_user.role == "coordinator" %>
+
 <h3>Events</h3>
 
 <% @user.events.each do |event| %>
@@ -38,9 +40,21 @@
 
 <h3>Squad</h3>
 
+<% if current_user.role == "student" %>
+
 <%= @instructor %>
 
+<% else %>
+
+<% @students.each do |student| %>
+	<%= student.firstname %><%= student.firstname %> <br>
+<% end %>
+
+<% end %>
+
 </div>
+
+<% end %>
 
 <script>
 

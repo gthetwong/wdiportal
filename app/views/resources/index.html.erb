@@ -2,7 +2,7 @@
 
 <h2>Resources</h2>
 
-<%= button_to "New resource", new_resource_path, method: "get", class: "btn btn-warning" %> <br>
+<%= ( button_to "New resource", new_resource_path, method: "get", class: "btn btn-warning" ) unless ( current_user.role == "coordinator" ) %> <br>
 
 <% if @resources.empty? %>
 	<p>No resources</p>
@@ -23,9 +23,11 @@ From students
 			<td>
 	      		<%= f.user.firstname %>
 	      	</td>
+	      	<% unless current_user.role == "coordinator" %>
 			<td>
 	      		<%= button_to "Edit", edit_resource_path(f), :method => "get", :class => "btn btn-default" %>
 			</td>
+			<% end %>
     	</tr>
 		<% end %>
 	<% end %>
@@ -48,9 +50,11 @@ From instructors
 			<td>
 	      		<%= f.user.firstname %>
 	      	</td>
+	      	<% unless current_user.role == "coordinator" %>
 			<td>
 	      		<%= button_to "Edit", edit_resource_path(f), :method => "get", :class => "btn btn-default" %>
 			</td>
+			<% end %>
     	</tr>
     	<% end %>
 	<% end %>

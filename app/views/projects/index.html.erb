@@ -2,7 +2,9 @@
 
 <h2>Projects</h2>
 
-<%= button_to "New project", new_project_path, method: "get", class: "btn btn-warning" %> <br>
+<% if current_user.role == "student" %>
+	<%= button_to "New project", new_project_path, method: "get", class: "btn btn-warning" %> <br>
+<% end %>
 
 <% if @projects.empty? %>
 	<p>No projects</p>
@@ -31,7 +33,7 @@
 		      	<% end %>
 		    </td>
 			<td>
-	      		<%= button_to "Edit", edit_project_path(f), :method => "get", :class => "btn btn-default" %>
+	      		<%= ( button_to "Edit", edit_project_path(f), :method => "get", :class => "btn btn-default" ) if ( current_user.projects.include?(f) )%>
 			</td>
     	</tr>
  

@@ -8,6 +8,7 @@ class UsersController < ApplicationController
 		id = params.require(:id)
 		@user = User.find(id)
 		@instructor = @user.squad.users.where(:role => "instructor").first.firstname unless @user.squad.nil?
+		@students = @user.squad.users.where(:role => "student") unless @user.squad.nil?
 		unless ( current_user.role == "instructor" || current_user.role == "coordinator" || @user == current_user )
 			redirect_to users_path
 		end

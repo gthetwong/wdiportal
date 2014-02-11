@@ -2,7 +2,9 @@
 
 <h2>Gists</h2>
 
-<%= button_to "New gist", new_gist_path, method: "get", class: "btn btn-warning" %> <br>
+<% if current_user.role == "instructor" %>
+	<%= button_to "New gist", new_gist_path, method: "get", class: "btn btn-warning" %> <br>
+<% end %>
 
 <% if @gists.empty? %>
 	<p>No gists</p>
@@ -19,9 +21,11 @@
 	      	<td>
 	      		<%= f.user.firstname %>
 			</td>
+			<% if current_user.role == "instructor" %>
 			<td>
 	      		<%= button_to "Edit", edit_gist_path(f), :method => "get", :class => "btn btn-default" %>
 			</td>
+			<% end %>
     	</tr>
  
 	<% end %>
