@@ -5,6 +5,10 @@ class LabsController < ApplicationController
 	end
 
 	def new
+		if current_user.role != "student"
+			flash[:alert] = "You must be a student to submit a lab"
+			redirect_to :labs
+		end
 		@lab = Lab.new
 		@assignments = Assignment.all
 	end
