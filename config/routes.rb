@@ -4,6 +4,8 @@ Wdiportal::Application.routes.draw do
 
   root :to => "gists#index"
 
+  get "/submissions/:assignment", to: "assignments#submissions", as: :submissions
+
   get "/site/home", to: "site#home"
   get "/site/about", to: "site#about"
 

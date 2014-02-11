@@ -1,0 +1,71 @@
+<div class="lab center medium">
+
+<h2>Submissions for <%= @assignment.title %></h2>
+
+<% if @assignment.labs.empty? %>
+	<p>No labs</p>
+<% else %>
+
+<h3>My squad</h3>
+
+<table>
+
+<% @assignment.labs.each do |lab| %>
+	<% if current_user.squad.users.include? (lab.user) %>
+	<tr>
+		<td>
+      		<%= lab.assignment.title %>
+      	</td>
+		<td>
+      		<%= link_to "#{lab.user.firstname} #{lab.user.lastname}", "#{lab.url}", :target => "_blank" %> <br>
+      	</td>
+    	<td>
+      		<%= lab.feeling %> <br>
+      		<%= lab.comment %>
+		</td>
+		<td>
+      		<%= button_to "Edit", edit_lab_path(lab), :method => "get", :class => "btn btn-default" %>
+		</td>
+	</tr>
+	<% end %>
+<% end %>
+
+</table>
+
+<h3>All submissions</h3>
+
+<table>
+
+<% @assignment.labs.each do |lab| %>
+	<tr>
+		<td>
+      		<%= lab.assignment.title %>
+      	</td>
+		<td>
+      		<%= link_to "#{lab.user.firstname} #{lab.user.lastname}", "#{lab.url}", :target => "_blank" %> <br>
+      	</td>
+    	<td>
+      		<%= lab.feeling %> <br>
+      		<%= lab.comment %>
+		</td>
+		<td>
+      		<%= button_to "Edit", edit_lab_path(lab), :method => "get", :class => "btn btn-default" %>
+		</td>
+	</tr>
+<% end %>
+
+</table>
+
+<% end %>
+
+</div>
+
+<script>
+
+var divwidth = $( "table" ).width();
+
+$(document).ready(function(){
+    $( "div.lab" ).css({width: divwidth});
+})
+
+</script>

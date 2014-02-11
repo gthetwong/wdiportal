@@ -55,4 +55,13 @@ class AssignmentsController < ApplicationController
 		redirect_to assignments_path
 	end
 
+	def submissions
+		if current_user.role != "instructor"
+			flash[:alert] = "You must be a instructor"
+			redirect_to :assignments
+		end
+		id = params[:assignment]
+		@assignment = Assignment.find_by_id(id)
+	end
+
 end

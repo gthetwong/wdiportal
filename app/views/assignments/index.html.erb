@@ -22,9 +22,9 @@
 	      		<%= button_to "Submit", new_lab_path, :method => "get", :class => "btn btn-default" %>
 			</td>
 			<% end %>
-			<% if ( current_user.role == "instructor" ) %>
+			<% if current_user.role == "instructor" %>
 	      	<td>
-	      		<%= button_to "View submissions", labs_path, :method => "get", :class => "btn btn-default" %>
+	      		<%= button_to "View submissions", submissions_path(f), :method => "get", :class => "btn btn-default" %>
 			</td>
 			<% end %>
 	      	<td>
