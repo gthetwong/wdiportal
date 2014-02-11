@@ -10,6 +10,8 @@
 	<p>No labs</p>
 <% else %>
 
+<% if !current_user.squad.nil? %>
+
 <h3>My squad</h3>
 
 <table>
@@ -35,6 +37,8 @@
 <% end %>
 
 </table>
+
+<% end %>
 
 <h3>All submissions</h3>
 
