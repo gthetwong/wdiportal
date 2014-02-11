@@ -6,7 +6,7 @@
 	<%= button_to "New gist", new_gist_path, method: "get", class: "btn btn-warning" %> <br>
 <% end %>
 
-<% if @gists.empty? %>
+<% if @gists.nil? %>
 
 	<p>No gists</p>
 
