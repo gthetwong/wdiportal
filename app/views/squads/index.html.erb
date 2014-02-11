@@ -1,6 +1,10 @@
 <div class="squad center small">
 
-<h2>Squads</h2>
+<% if current_user.role == "coordinator" %>
+	<h2>Squads</h2>
+<% else %>
+	<h2>Squad</h2>
+<% end %>
 
 <% if current_user.role == "coordinator" %>
 	<%= button_to "New squad", new_squad_path, method: "get", class: "btn btn-warning" %> <br>

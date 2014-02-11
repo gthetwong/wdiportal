@@ -50,9 +50,11 @@
 			<td>
 	      		<%= f.assignment.title %>
 	      	</td>
+	      	<% if current_user.role != "student" %>
 			<td>
 	      		<%= link_to "#{f.user.firstname} #{f.user.lastname}", "#{f.url}", :target => "_blank" %> <br>
 	      	</td>
+	      	<% end %>
 	    	<td>
 	      		<%= f.feeling %> <br>
 	      		<%= f.comment %>
