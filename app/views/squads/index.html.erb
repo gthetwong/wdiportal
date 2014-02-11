@@ -2,15 +2,18 @@
 
 <h2>Squads</h2>
 
-<%= ( button_to "New squad", new_squad_path, method: "get", class: "btn btn-warning" ) if ( current_user.role == "coordinator" ) %> <br>
+<% if current_user.role == "coordinator" %>
+	<%= button_to "New squad", new_squad_path, method: "get", class: "btn btn-warning" %> <br>
+<% end %>
 
 <% if @squads.empty? %>
 	<p>No squads</p>
+<% elsif current_user.squad.nil? %>
+	<p>You have not been assigned a squad.</p>
 <% elsif current_user.role != "coordinator" %>
 <table>
 
 <% f = current_user.squad %>
-
 
 		<tr>
 	    	<td>
