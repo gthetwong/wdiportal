@@ -5,9 +5,10 @@
 <%= ( button_to "New assignment", new_assignment_path, method: "get", class: "btn btn-warning" ) if ( current_user.role == "instructor" )%> <br>
 
 <% if @assignments.empty? %>
-	<p>No assignments</p>
-<% else %>
 
+	<p>No assignments</p>
+
+<% else %>
 
 <table>
 
@@ -17,16 +18,17 @@
 	    	<td>
 	      		<%= link_to f.title, "#{f.url}", :target => "_blank" %>
 	      	</td>
+
 	      	<% if ( current_user.role == "student" ) %>
 	      	<td>
 	      		<%= button_to "Submit", new_lab_path, :method => "get", :class => "btn btn-default" %>
 			</td>
-			<% end %>
-			<% if current_user.role == "instructor" %>
+			<% elsif current_user.role == "instructor" %>
 	      	<td>
 	      		<%= button_to "View submissions", submissions_path(f), :method => "get", :class => "btn btn-default" %>
 			</td>
 			<% end %>
+
 	      	<td>
 	      		<%= ( button_to "Edit", edit_assignment_path(f), :method => "get", :class => "btn btn-default" ) if ( current_user.role == "instructor" ) %>
 			</td>

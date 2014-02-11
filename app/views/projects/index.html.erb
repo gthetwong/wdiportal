@@ -7,41 +7,46 @@
 <% end %>
 
 <% if @projects.empty? %>
+
 	<p>No projects</p>
+
 <% else %>
 
-<table>
+	<table>
 
-	<% @projects.each do |f| %>
-	
-		<tr>
-	    	<td>
-	      		<%= link_to f.title, "#{f.url}", :target => "_blank" %> <br>
-	      		<%= f.technology %> <br>
-	      		<%= f.description %>
-	      	</td>
-			<td>
-	      		<% f.users.each do |user| %>
-	      			<%= user.firstname %> <br>
-	      		<% end %>
-			</td>
-			<% if current_user.role == "student" %>
-			<td>
-	      		<% if current_user.projects.include?(f) %>
-		      		<%= button_to "Leave", leave_project_path(f), :method => "get", :class => "btn btn-default" %>
-		      	<% else %>
-		      		<%= button_to "Join", join_project_path(f), :method => "get", :class => "btn btn-default" %>
-		      	<% end %>
-		    </td>
-		    <% end %>
-			<td>
-	      		<%= ( button_to "Edit", edit_project_path(f), :method => "get", :class => "btn btn-default" ) if ( current_user.projects.include?(f) )%>
-			</td>
-    	</tr>
- 
-	<% end %>
+		<% @projects.each do |f| %>
+		
+			<tr>
+		    	<td>
+		      		<%= link_to f.title, "#{f.url}", :target => "_blank" %> <br>
+		      		<%= f.technology %> <br>
+		      		<%= f.description %>
+		      	</td>
 
-</table><br>
+				<td>
+		      		<% f.users.each do |user| %>
+		      			<%= user.firstname %> <br>
+		      		<% end %>
+				</td>
+
+				<% if current_user.role == "student" %>
+				<td>
+		      		<% if current_user.projects.include?(f) %>
+			      		<%= button_to "Leave", leave_project_path(f), :method => "get", :class => "btn btn-default" %>
+			      	<% else %>
+			      		<%= button_to "Join", join_project_path(f), :method => "get", :class => "btn btn-default" %>
+			      	<% end %>
+			    </td>
+			    <% end %>
+			    
+				<td>
+		      		<%= ( button_to "Edit", edit_project_path(f), :method => "get", :class => "btn btn-default" ) if ( current_user.projects.include?(f) )%>
+				</td>
+	    	</tr>
+	 
+		<% end %>
+
+	</table><br>
 
 <% end %>
 

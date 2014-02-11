@@ -5,61 +5,64 @@
 <%= ( button_to "New resource", new_resource_path, method: "get", class: "btn btn-warning" ) unless ( current_user.role == "coordinator" ) %> <br>
 
 <% if @resources.empty? %>
+
 	<p>No resources</p>
+
 <% else %>
 
-From students
+	<h3>From students</h3>
 
-<table>
+	<table>
 
-	<% @resources.each do |f| %>
-		<% if !f.user.nil? && f.user.role == "student" %>
-	
-		<tr>
-			<td>
-	      		<%= link_to f.title, "#{f.url}", :target => "_blank" %> <br>
-	      		<%= f.description %>
-	      	</td>
-			<td>
-	      		<%= f.user.firstname %>
-	      	</td>
-	      	<% unless current_user.role == "coordinator" %>
-			<td>
-	      		<%= button_to "Edit", edit_resource_path(f), :method => "get", :class => "btn btn-default" %>
-			</td>
+		<% @resources.each do |f| %>
+			<% if !f.user.nil? && f.user.role == "student" %>
+			<tr>
+				<td>
+		      		<%= link_to f.title, "#{f.url}", :target => "_blank" %> <br>
+		      		<%= f.description %>
+		      	</td>
+
+				<td>
+		      		<%= f.user.firstname %>
+		      	</td>
+
+		      	<% unless current_user.role == "coordinator" %>
+				<td>
+		      		<%= button_to "Edit", edit_resource_path(f), :method => "get", :class => "btn btn-default" %>
+				</td>
+				<% end %>
+	    	</tr>
 			<% end %>
-    	</tr>
 		<% end %>
-	<% end %>
 
-</table><br>
+	</table><br>
 
+	<h3>From instructors</h3>
 
-From instructors
+	<table>
 
-<table>
+		<% @resources.each do |f| %>
+			<% if !f.user.nil? && f.user.role == "instructor" %>
+			<tr>
+				<td>
+		      		<%= link_to f.title, "#{f.url}", :target => "_blank" %> <br>
+		      		<%= f.description %>
+		      	</td>
 
-	<% @resources.each do |f| %>
-		<% if !f.user.nil? && f.user.role == "instructor" %>
-	
-		<tr>
-			<td>
-	      		<%= link_to f.title, "#{f.url}", :target => "_blank" %> <br>
-	      		<%= f.description %>
-	      	</td>
-			<td>
-	      		<%= f.user.firstname %>
-	      	</td>
-	      	<% unless current_user.role == "coordinator" %>
-			<td>
-	      		<%= button_to "Edit", edit_resource_path(f), :method => "get", :class => "btn btn-default" %>
-			</td>
-			<% end %>
-    	</tr>
-    	<% end %>
-	<% end %>
+				<td>
+		      		<%= f.user.firstname %>
+		      	</td>
+		      	
+		      	<% unless current_user.role == "coordinator" %>
+				<td>
+		      		<%= button_to "Edit", edit_resource_path(f), :method => "get", :class => "btn btn-default" %>
+				</td>
+				<% end %>
+	    	</tr>
+	    	<% end %>
+		<% end %>
 
-</table>
+	</table>
 
 <% end %>
 

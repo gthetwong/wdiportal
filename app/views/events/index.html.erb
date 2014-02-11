@@ -5,7 +5,9 @@
 <%= ( button_to "New event", new_event_path, method: "get", class: "btn btn-warning" ) if ( current_user.role == "coordinator" )%> <br>
 
 <% if @events.empty? %>
+
 	<p>No events</p>
+
 <% else %>
 
 <table>
@@ -17,12 +19,14 @@
 	      		<%= f.date.strftime("%a, %b %e") %> <br>
 	      		<%= f.time.strftime("%l:%M %p") %>
 	      	</td>
+	      	
 	    	<td>
 	      		<%= f.title %> <br>
 	      		<%= f.location %> <br>
 	      		<%= f.description %>
 	      		$<%= f.cost %>
 	      	</td>
+
 	      	<% unless current_user.role == "coordinator" %>
 	      	<td>
 	      		<% if current_user.events.include?(f) %>
@@ -32,9 +36,11 @@
 		      	<% end %>
 			</td>
 			<% end %>
+
 	      	<td>
 	      		<%= button_to "Who's attending", event_path(f), :method => "get", :class => "btn btn-default" %>
 			</td>
+
 			<% if current_user.role == "coordinator" %>
 	      	<td>
 	      		<%= button_to "Edit", edit_event_path(f), :method => "get", :class => "btn btn-default" %>
@@ -44,7 +50,7 @@
  
 	<% end %>
 
-</table><br>
+</table> <br>
 
 <% end %>
 

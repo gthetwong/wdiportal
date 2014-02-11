@@ -8,70 +8,81 @@
 
 <% unless current_user.role == "coordinator" %>
 
-<% if @user.role == "instructor" %>
-	<h3>Gists</h3>
+	<% if @user.role == "instructor" %>
 
-	<% if @user.gists.empty? %>
-		<p>No gists! <a href="/gists/new">Add a gist</a></p>
-	<% end %>
+		<h3>Gists</h3>
 
-	<% @user.gists.each do |gist| %>
-		<%= link_to gist.title, gists_path %> <br>
-	<% end %>
-<% end %>
-
-<h3>Resources</h3>
-
-<% if @user.resources.empty? %>
-	<p>No resources! <a href="/resources/new">Add a resource</a></p>
-<% end %>
-
-<% @user.resources.each do |resource| %>
-	<%= link_to resource.title, resources_path %> <br>
-<% end %>
-
-<% if @user.role == "student" %>
-	<h3>Projects</h3>
-
-	<% if @user.projects.empty? %>
-		<p>No projects! <a href="/projects/new">Add a projects</a></p>
-	<% end %>
-
-	<% @user.projects.each do |project| %>
-		<%= link_to project.title, projects_path %> <br>
-	<% end %>
-<% end %>
-
-<h3>Events</h3>
-
-<% if @user.events.empty? %>
-	<p>No events! <a href="/events">Check for events</a></p>
-<% end %>
-
-<% @user.events.each do |event| %>
-	<%= link_to event.title, events_path %> <br>
-<% end %>
-
-<h3>Squad</h3>
-
-<% if @user.squad.nil? %>
-	<p>You have not been assigned to a squad yet</p>
-<% else %>
-
-	<% if current_user.role == "student" %>
-		<%= @instructor %>
-	<% else %>
-		<% if @students.nil? %>
-			<p>No students</p>
-		<% else %>
-			<% @students.each do |student| %>
-				<%= student.firstname %> <%= student.lastname %> <br>
-			<% end %>
+		<% if @user.gists.empty? %>
+			<p>No gists! <a href="/gists/new">Add a gist</a></p>
 		<% end %>
-	<% end %>
-<% end %>
 
-</div>
+		<% @user.gists.each do |gist| %>
+			<%= link_to gist.title, gists_path %> <br>
+		<% end %>
+
+	<% end %>
+
+	<h3>Resources</h3>
+
+	<% if @user.resources.empty? %>
+		<p>No resources! <a href="/resources/new">Add a resource</a></p>
+	<% end %>
+
+	<% @user.resources.each do |resource| %>
+		<%= link_to resource.title, resources_path %> <br>
+	<% end %>
+
+	<% if @user.role == "student" %>
+
+		<h3>Projects</h3>
+
+		<% if @user.projects.empty? %>
+			<p>No projects! <a href="/projects/new">Add a projects</a></p>
+		<% end %>
+
+		<% @user.projects.each do |project| %>
+			<%= link_to project.title, projects_path %> <br>
+		<% end %>
+
+	<% end %>
+
+	<h3>Events</h3>
+
+	<% if @user.events.empty? %>
+		<p>No events! <a href="/events">Check for events</a></p>
+	<% end %>
+
+	<% @user.events.each do |event| %>
+		<%= link_to event.title, events_path %> <br>
+	<% end %>
+
+	<h3>Squad</h3>
+
+	<% if @user.squad.nil? %>
+
+		<p>You have not been assigned to a squad yet</p>
+
+	<% else %>
+
+		<% if current_user.role == "student" %>
+
+			<%= @instructor %>
+
+		<% else %>
+
+			<% if @students.nil? %>
+				<p>No students</p>
+			<% else %>
+				<% @students.each do |student| %>
+					<%= student.firstname %> <%= student.lastname %> <br>
+				<% end %>
+			<% end %>
+			
+		<% end %>
+
+	<% end %>
+
+	</div>
 
 <% end %>
 

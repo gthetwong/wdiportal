@@ -7,7 +7,9 @@
 <% end %>
 
 <% if @gists.empty? %>
+
 	<p>No gists</p>
+
 <% else %>
 
 <table>
@@ -18,9 +20,11 @@
 	    	<td>
 	      		<%= link_to f.title, "#{f.url}", :target => "_blank" %>
 	      	</td>
+
 	      	<td>
 	      		<%= f.user.firstname %>
 			</td>
+			
 			<% if current_user.role == "instructor" %>
 			<td>
 	      		<%= button_to "Edit", edit_gist_path(f), :method => "get", :class => "btn btn-default" %>
@@ -30,7 +34,7 @@
  
 	<% end %>
 
-</table><br>
+</table> <br>
 
 <% end %>
 

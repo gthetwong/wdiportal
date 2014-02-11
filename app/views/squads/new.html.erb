@@ -3,36 +3,41 @@
 <h2>New Squad</h2>
 
 <% if @instructors.empty? %>
+
 	<p>There are no instructors to assign to squads</p>
+
 <% else %>
 
-<%= form_for @squad, class: "form-group" do |f| %>
-	
-    <% options = [] %>
-    <% @unassigned_instructors.each do |instructor| %>
-		<% instructor_array = [instructor.firstname, instructor.id] %>
-		<% options << instructor_array %>
-    <% end %>
+	<%= form_for @squad, class: "form-group" do |f| %>
+		
+	    <% options = [] %>
+	    <% @unassigned_instructors.each do |instructor| %>
+			<% instructor_array = [instructor.firstname, instructor.id] %>
+			<% options << instructor_array %>
+	    <% end %>
 
-    <% if options.empty? %>
-    	All instructors have already been assigned to a squad. <br><br>
-    	<button class="btn btn-default"><%= link_to "Back", squads_path, :method => "get" %></button>
-    <% else %>
+	    <% if options.empty? %>
 
-	    <label>Select squad instructor</label> <br>
-    	<%= select_tag(:squad_instructor, options_for_select(options)) %> <br><br>
+	    	All instructors have already been assigned to a squad. <br><br>
+	    	<button class="btn btn-default"><%= link_to "Back", squads_path, :method => "get" %></button>
 
-	    <label>Select unassigned students to add</label> <br>
+	    <% else %>
 
-		<% @unassigned_students.each do |student| %>
-			<%= check_box("squad_students", "add", {:multiple => true}, student.id, nil) %>
-			<%= label_tag student.firstname %> <br>
-		<% end %> <br>
+		    <label>Select squad instructor</label> <br>
+	    	<%= select_tag(:squad_instructor, options_for_select(options)) %> <br><br>
 
-	    <%= f.submit "Create", :class => "btn btn-primary" %>
+		    <label>Select unassigned students to add</label> <br>
+
+			<% @unassigned_students.each do |student| %>
+				<%= check_box("squad_students", "add", {:multiple => true}, student.id, nil) %>
+				<%= label_tag student.firstname %> <br>
+			<% end %> <br>
+
+		    <%= f.submit "Create", :class => "btn btn-primary" %>
+		    
+		<% end %>
+
 	<% end %>
-
-<% end %>
 
 <% end %>
 

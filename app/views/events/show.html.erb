@@ -3,7 +3,9 @@
 <h2><%= @event.title %></h2>
 
 <% if @event.users.empty? %>
+
 	<p>No students attending yet</p>
+	
 <% else %>
 
 	<% @event.users.each do |user| %>
