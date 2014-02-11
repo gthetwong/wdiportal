@@ -3,7 +3,7 @@ class SquadsController < ApplicationController
 	def index
 		empty_squads = Squad.all
 		empty_squads.each do |squad|
-			squad.destroy if ( squad_instructor(squad).nil? )
+			squad.destroy if ( squad_instructor(squad).first.nil? )
 		end
 		@squads = Squad.all
 	end
