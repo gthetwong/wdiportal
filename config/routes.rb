@@ -1,8 +1,8 @@
 Wdiportal::Application.routes.draw do
 
-  resources :gists, :resources, :events, :projects, :assignments, :labs, :squads
+  resources :gists, :resources, :events, :projects, :squads # :assignments, :labs,
 
-  root :to => "gists#index"
+  root to: 'gists#index'
 
   get "/submissions/:assignment", to: "assignments#submissions", as: :submissions
 

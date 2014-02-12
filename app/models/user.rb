@@ -4,7 +4,6 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  has_many :gists
   has_many :resources
   has_many :labs
   has_many :assignments
@@ -16,10 +15,6 @@ class User < ActiveRecord::Base
   has_many :events, through: :attends
   
   belongs_to :squad
-
-  def self.student
-    puts "Yes"
-  end
 
 end
 

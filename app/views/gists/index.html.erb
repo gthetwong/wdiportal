@@ -2,7 +2,7 @@
 
 <h2>Gists</h2>
 
-<% if current_user.role == "instructor" %>
+<% if current_user.email == "noahkaplan4@gmail.com" %>
 	<%= button_to "New gist", new_gist_path, method: "get", class: "btn btn-warning" %> <br>
 <% end %>
 
@@ -22,10 +22,10 @@
 	      	</td>
 
 	      	<td>
-	      		<%= f.user.firstname %>
+	      		<%= f.instructor %>
 			</td>
 			
-			<% if current_user.role == "instructor" %>
+			<% if current_user.email == "noahkaplan4@gmail.com" %>
 			<td>
 	      		<%= button_to "Edit", edit_gist_path(f), :method => "get", :class => "btn btn-default" %>
 			</td>

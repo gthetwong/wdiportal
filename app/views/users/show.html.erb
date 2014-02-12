@@ -8,20 +8,6 @@
 
 <% unless current_user.role == "coordinator" %>
 
-	<% if @user.role == "instructor" %>
-
-		<h3>Gists</h3>
-
-		<% if @user.gists.empty? %>
-			<p>No gists! <a href="/gists/new">Add a gist</a></p>
-		<% end %>
-
-		<% @user.gists.each do |gist| %>
-			<%= link_to gist.title, gists_path %> <br>
-		<% end %>
-
-	<% end %>
-
 	<h3>Resources</h3>
 
 	<% if @user.resources.empty? %>
