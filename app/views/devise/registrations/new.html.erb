@@ -6,13 +6,16 @@
   <%= devise_error_messages! %>
 
   <div><%= f.label :firstname, "First name" %><br />
-  <%= f.text_field :firstname, :autofocus => true, class: "form-control" %></div> <br>
+  <%= f.text_field :firstname, :autofocus => true, class: "form-control", placeholder: "Brian" %></div> <br>
 
   <div><%= f.label :lastname, "Last name" %><br />
-  <%= f.text_field :lastname, class: "form-control" %></div> <br>
+  <%= f.text_field :lastname, class: "form-control", placeholder: "Wong" %></div> <br>
+
+  <div><%= f.label :githubhandle, "Github Handle" %><br />
+  <%= f.text_field :githubhandle, :class => "form-control", placeholder: "gagithan" %></div> <br>
 
   <div><%= f.label :email %><br />
-  <%= f.email_field :email, :class => "form-control" %></div> <br>
+  <%= f.email_field :email, :class => "form-control", placeholder: "name@ga.co" %></div> <br>
 
   <div><%= f.label :password %><br />
   <%= f.password_field :password, :class => "form-control" %></div> <br>
