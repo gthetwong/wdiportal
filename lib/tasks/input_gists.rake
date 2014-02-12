@@ -1,4 +1,6 @@
-task :input_gists => :environment do 
+require 'csv'
+
+task :input_gists => :environment do
 
 	begin
 		file = File.read("gists.csv")
