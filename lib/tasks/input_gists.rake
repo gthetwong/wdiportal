@@ -1,5 +1,3 @@
-require 'CSV'
-
 task :input_gists => :environment do 
 
 	begin
