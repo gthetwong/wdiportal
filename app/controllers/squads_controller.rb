@@ -1,6 +1,7 @@
 class SquadsController < ApplicationController
 
 	def index
+		current_user.visits.create(action: "view squads")
 		empty_squads = Squad.all
 		empty_squads.each do |squad|
 			squad.destroy if ( squad_instructor(squad).first.nil? )
@@ -14,12 +15,14 @@ class SquadsController < ApplicationController
 			redirect_to :squads
 		end
 		@squad = Squad.new
+		current_user.visits.create(action: "create squad")
 		@instructors = User.where(:role => "instructor")
 		@unassigned_instructors = instructors_without_squad
 		@unassigned_students = students_without_squad
 	end
 
 	def show
+		current_user.visits.create(action: "view squad")
 		id = params.require(:id)
 		@squad = Squad.find(id)
 	end
@@ -55,7 +58,8 @@ class SquadsController < ApplicationController
 	def update
 		if current_user.role != "coordinator"
 			flash[:alert] = "You must be a coordinator"
-			redirect_to :squads
+			current_user.visits.create(action: "UNAUTHORIZED attempt to edit squad")
+			redirect_to squads_path
 		end
 		redirect_to squads_path
 	end
@@ -80,6 +84,7 @@ class SquadsController < ApplicationController
 	def reset
 		if current_user.role != "coordinator"
 			flash[:alert] = "You must be a coordinator"
+			current_user.visits.create(action: "UNAUTHORIZED attempt to reset squads")
 			redirect_to :squads
 		end
 		squads = Squad.all
@@ -87,6 +92,7 @@ class SquadsController < ApplicationController
 			instructor = squad_instructor(squad)
 			squad.users = instructor
 		end
+		current_user.visits.create(action: "reset squads")
 		redirect_to squads_path
 	end
 

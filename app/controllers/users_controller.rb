@@ -1,10 +1,12 @@
 class UsersController < ApplicationController
 
 	def index
+		current_user.visits.create(action: "view users")
 		@users = User.all
 	end
 
 	def show
+		current_user.visits.create(action: "view user")
 		id = params.require(:id)
 		@user = User.find(id)
 		unless ( @user.squad.nil? || @user.squad.users.where(:role => "instructor").first.nil? )
@@ -28,6 +30,7 @@ class UsersController < ApplicationController
 	def change_role
 		if current_user.role != "coordinator"
 			flash[:alert] = "You must be a coordinator to change a user's role"
+			current_user.visits.create(action: "UNAUTHORIZED attempt to change user role")
 			redirect_to :users
 		end
 		id = params.require(:id)
