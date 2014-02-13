@@ -21,18 +21,17 @@
 	      	</td>
 	      	
 	    	<td>
-	      		<%= f.title %> <br>
-	      		<%= f.location %> <br>
-	      		<%= f.description %>
-	      		$<%= f.cost %>
+	      		<span class="tabletitle"><%= f.title %> <br></span>
+	      		<p class="tabledescription"><%= f.location %> <br>
+	      		<%= f.description %> <span class="cost">$<%= f.cost %></span></p>
 	      	</td>
 
 	      	<% unless current_user.role == "coordinator" %>
 	      	<td>
 	      		<% if current_user.events.include?(f) %>
-		      		<%= button_to "Cancel", cancel_rsvp_path(f), :method => "get", :class => "btn btn-default" %>
+		      		<%= button_to "Cancel", cancel_rsvp_path(f), :method => "get", :class => "btn btn-default cancel" %>
 		      	<% else %>
-		      		<%= button_to "Attend", rsvp_path(f), :method => "get", :class => "btn btn-default" %>
+		      		<%= button_to "Attend", rsvp_path(f), :method => "get", :class => "btn btn-default attend" %>
 		      	<% end %>
 			</td>
 			<% end %>

@@ -18,19 +18,20 @@
 			<% if !f.user.nil? && f.user.role == "student" %>
 			<tr>
 				<td>
-		      		<%= link_to f.title, "#{f.url}", :target => "_blank" %> <br>
-		      		<%= f.description %>
+		      		<span class="tabletitle"><%= link_to f.title, "#{f.url}", :target => "_blank" %> <br></span>
+		      		<p class="tabledescription"><%= f.description %></p>
 		      	</td>
 
 				<td>
-		      		<%= f.user.firstname %>
+		      		<span class="lightgrey"><%= f.user.firstname %></span>
 		      	</td>
 
-		      	<% unless current_user.role == "coordinator" %>
 				<td>
+				<% if current_user.resources.include? (f) %>
 		      		<%= button_to "Edit", edit_resource_path(f), :method => "get", :class => "btn btn-default" %>
+		      	<% end %>
 				</td>
-				<% end %>
+				
 	    	</tr>
 			<% end %>
 		<% end %>
@@ -45,19 +46,19 @@
 			<% if !f.user.nil? && f.user.role == "instructor" %>
 			<tr>
 				<td>
-		      		<%= link_to f.title, "#{f.url}", :target => "_blank" %> <br>
-		      		<%= f.description %>
+		      		<span class="tabletitle"><%= link_to f.title, "#{f.url}", :target => "_blank" %> <br></span>
+		      		<p class="tabledescription"><%= f.description %></p>
 		      	</td>
 
 				<td>
-		      		<%= f.user.firstname %>
+		      		<span class="lightgrey"><%= f.user.firstname %></span>
 		      	</td>
 		      	
-		      	<% unless current_user.role == "coordinator" %>
 				<td>
+				<% if current_user.resources.include? (f) %>
 		      		<%= button_to "Edit", edit_resource_path(f), :method => "get", :class => "btn btn-default" %>
+		      	<% end %>
 				</td>
-				<% end %>
 	    	</tr>
 	    	<% end %>
 		<% end %>
@@ -73,11 +74,7 @@
 var divwidth = $( "table" ).width();
 
 $(document).ready(function(){
-	if divwidth > 300 {
-    	$( "div.resource" ).css({width: divwidth});
-    } else {
-		$( "div.resource" ).css({width: 300});
-    };
+	$( "div.resource" ).css({width: divwidth});
 })
 
 </script>

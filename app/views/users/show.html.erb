@@ -1,64 +1,106 @@
-<div class="user center small">
+<div class ="profile">
 
-<h2><%= @user.firstname %> <%= @user.lastname %></h2>
+<div class="row">
+	<div class="col-sm-6 col-sm-offset-3 user">
+	<div class="background">
 
-<%= @user.email %> <br><br>
+		<a href="/users/sign_out"><button class="btn btn-default signout">Sign Out</button></a>
 
-<a href="/users/sign_out"><button class="btn btn-default">Sign Out</button></a>
+		<div class="left">
+		<h2><%= @user.firstname %> <%= @user.lastname %></h2>
 
-<% unless current_user.role == "coordinator" %>
-
-	<h3>Resources</h3>
-
-	<% if @user.resources.empty? %>
-		<p>No resources! <a href="/resources/new">Add a resource</a></p>
-	<% end %>
-
-	<% @user.resources.each do |resource| %>
-		<%= link_to resource.title, resources_path %> <br>
-	<% end %>
-
-	<% if @user.role == "student" %>
-
-		<h3>Projects</h3>
-
-
-<?xml version="1.0" encoding="utf-8"?>
-<Canvas xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" x:Name="appbar_list" Width="76" Height="76" Clip="F1 M 0,0L 76,0L 76,76L 0,76L 0,0">
-	<Path Width="38" Height="30" Canvas.Left="19" Canvas.Top="23" Stretch="Fill" Fill="#FF000000" Data="F1 M 19,23L 27,23L 27,31L 19,31L 19,23 Z M 19,34L 27,34L 27,42L 19,42L 19,34 Z M 31,23L 57,23L 57,31L 31,31L 31,23 Z M 19,45L 27,45L 27,53L 19,53L 19,45 Z M 31,34L 57,34L 57,42L 31,42L 31,34 Z M 31,45L 57,45L 57,53L 31,53L 31,45 Z "/>
-</Canvas>
-
-		<% if @user.projects.empty? %>
-			<p>No projects! <a href="/projects/new">Add a projects</a></p>
-		<% end %>
-
-		<% @user.projects.each do |project| %>
-			<%= link_to project.title, projects_path %> <br>
-		<% end %>
-
-	<% end %>
-
-	<h3>Events</h3>
-
-	<% if @user.events.empty? %>
-		<p>No events! <a href="/events">Check for events</a></p>
-	<% end %>
-
-	<% @user.events.each do |event| %>
-		<%= link_to event.title, events_path %> <br>
-	<% end %>
-
-	<h3>Squad</h3>
-
-	<% if @user.squad.nil? %>
-
-		<p>You have not been assigned to a squad yet</p>
-
-	<% else %>
+		<%= @user.githubhandle %> <br>
+		<%= @user.email %>
 
 		<% if current_user.role == "student" %>
+			<% if @user.squad.nil? %>
+				<p>You have not been assigned to a squad yet</p>
+			<% else %>
+				<%= @instructor %>
+			<% end %>
+		<% end %>
+		</div>
+	</div>
+	</div>
+</div>
 
-			<%= @instructor %>
+<div class="row">
+	<div class="col-sm-2 col-sm-offset-3 user">
+
+		<% unless current_user.role == "coordinator" %>
+
+			<h3 class="second eventtitle">EVENTS</h3>
+
+			<% if @user.events.empty? %>
+				<p>No events! <a href="/events">Check for events</a></p>
+			<% end %>
+
+			<div class="dates">
+			<% @user.events.each do |event| %>
+				<div class="date">
+				<p class="numbers"><%= event.date.strftime("%b %e") %></p>
+	      		<p class="time"><%= event.time.strftime("%l:%M %p") %></p>
+				<p class="title"><%= link_to event.title, events_path %></p>
+				</div>
+			<% end %>
+			</div>
+			
+		<% end %>
+
+	</div>
+
+	<div class="col-sm-4 user">
+
+		<% if current_user.role == "student" %>
+		<div class="background">
+
+		<h3 class="second">PROJECTS</h3>
+
+			<% if @user.projects.empty? %>
+				<p>No projects! <a href="/projects/new">Add a projects</a></p>
+			<% end %>
+
+			<% @user.projects.each do |project| %>
+				<div class="listitem">
+				<%= link_to project.title, "#{project.url}", :target => "_blank" %> <br>
+				<%= project.description %>
+				</div>
+			<% end %>
+
+		</div>
+		<% end %>
+
+		<% unless current_user.role == "coordinator" %>
+		<div class="background resourcesdiv">
+
+			<h3 id="resourcestitle">RESOURCES</h3>
+
+			<% if @user.resources.empty? %>
+				<p>No resources! <a href="/resources/new">Add a resource</a></p>
+			<% end %>
+
+			<% @user.resources.each do |resource| %>
+				<div class="listitem">
+				<%= link_to resource.title, resources_path %> <br>
+				<%= resource.description %>
+				</div>
+			<% end %>
+
+		</div>
+		<% end %>
+
+	</div>
+</div>
+
+<% if current_user.role == "instructor" %>
+
+<div class="row">
+	<div class="col-sm-6 col-sm-offset-3 user">
+
+		<div class="background">
+		<% if @user.squad.nil? %>
+
+			<p>You have not been assigned to a squad yet</p>
 
 		<% else %>
 
@@ -69,23 +111,33 @@
 					<%= student.firstname %> <%= student.lastname %> <br>
 				<% end %>
 			<% end %>
-			
+				
 		<% end %>
-
-	<% end %>
+		</div>
 
 	</div>
+</div>
 
 <% end %>
+
+</div>
 
 <script>
 
 var divwidth = $( "table" ).width();
 
+$(document).ready(function(){    
+    $( "div.date" ).css({height: $( "div.date" ).width()}); 
+});
+
 $(document).ready(function(){
+
+	$( "div.date" ).css({height: $( "div.date" ).width()});
+
 	if divwidth < 300 {
     	$( "div.user" ).css({width: divwidth});
 	};
+
 })
 
 </script>

@@ -18,11 +18,11 @@
 	
 		<tr>
 	    	<td>
-	      		<%= link_to f.title, "#{f.url}", :target => "_blank" %>
+	      		<span class="tabletitle"><%= link_to f.title, "#{f.url}", :target => "_blank" %></span>
 	      	</td>
 
 	      	<td>
-	      		<%= f.instructor %>
+	      		<span class="lightgrey"><%= f.instructor %></span>
 			</td>
 			
 			<% if current_user.email == "noahkaplan4@gmail.com" %>

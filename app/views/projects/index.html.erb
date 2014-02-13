@@ -18,14 +18,14 @@
 		
 			<tr>
 		    	<td>
-		      		<%= link_to f.title, "#{f.url}", :target => "_blank" %> <br>
-		      		<%= f.technology %> <br>
-		      		<%= f.description %>
+		      		<span class="tabletitle"><%= link_to f.title, "#{f.url}", :target => "_blank" %> <br></span>
+		      		<p class="technology"><%= f.technology %></p>
+		      		<p class="tabledescription"><%= f.description %></p>
 		      	</td>
 
 				<td>
 		      		<% f.users.each do |user| %>
-		      			<%= user.firstname %> <br>
+		      			<span class="lightgrey"><%= user.firstname %> <br></span>
 		      		<% end %>
 				</td>
 

@@ -72,6 +72,18 @@ table td {
 	padding: 22px 30px;
 }
 
+.gist table {
+	width: 500px;
+}
+
+.event table {
+	width: 700px;
+}
+
+.user table {
+	width: 400px;
+}
+
 div > form {
 	width: 300px;
 }
@@ -101,3 +113,159 @@ div > form {
 	color: #A30000;
 	margin-bottom: -20px;
 }
+
+.user {
+	min-height: 100px;
+	min-width: 100px;
+	padding: 0;
+}
+
+.background {
+	background-color: #F0F0F0;
+	padding: 18px 18px;
+	padding-bottom: 5px;
+	margin: 7px;
+	border-radius: 3px;
+}
+
+.signout {
+	float: right;
+}
+
+.left {
+	margin-top: -47px;
+}
+
+.second {
+	margin-top: -5px;
+}
+
+.profile h2, .profile h3 {
+	font-family: 'Source Sans Pro', sans-serif;
+	font-weight: bold;
+}
+
+.profile h2 {
+	font-size: 45px;
+	margin-bottom: 5px;
+}
+
+.profile h3 {
+	font-size: 24px;
+	font-style: italic;
+	margin-left: -2px;
+}
+
+.resource h3 {
+	font-family: 'Source Sans Pro', sans-serif;
+	font-size: 26px;
+}
+
+.profile .date {
+	padding: 30px;
+	margin: 7px 12px 18px 7px;
+	background-color: #FCFCFC;
+	border-radius: 0px;
+	height: 163px;
+}
+
+.dates div:first-child {
+	margin-top: -23px;
+}
+
+.profile .listitem {
+	padding: 12px;
+	background-color: #FCFCFC;
+	border-radius: 3px;
+	margin-bottom: 12px;
+}
+
+.profile a {
+	color: Black;
+}
+
+.profile a:hover {
+	color: #05009E;
+}
+
+.eventtitle {
+	position: relative;
+	right: 92px;
+	top: 11px;
+}
+
+.date .numbers {
+	margin-top: -10px;
+	font-weight: 450;
+	font-size: 40px;
+}
+
+.date .time {
+	margin-top: -10px;
+	font-weight: bold;
+	font-size: 18px;
+}
+
+.date .title a {
+	margin-top: 5px;
+	color: #05009E;
+}
+
+#resourcestitle {
+	margin-top: -4px;
+}
+
+.resourcesdiv {
+	margin-top: 14px;
+}
+
+.lightgrey {
+	color: #757575;
+	font-size: 14px;
+	font-style: italic;
+}
+
+.resource .lightgrey {
+	margin-right: -5px;
+}
+
+.tabletitle {
+	font-family: 'Calibri', 'Source Sans Pro', sans-serif;
+	font-size: 22px;
+}
+
+.tabledescription {
+	font-family: 'Arial', 'Source Sans Pro', sans-serif;
+	color: #6B6B6B;
+	font-size: 13px;
+	font-style: italic;
+	font-weight: normal;
+	margin-top: 9px;
+	line-height: 19px;
+	margin-bottom: -2px;
+}
+
+.technology {
+	font-family: 'Calibri', 'Source Sans Pro', sans-serif;
+	color: #363636;
+	font-size: 17px;
+	font-style: italic;
+	font-weight: normal;
+	margin-top: 7px;
+	line-height: 19px;
+	margin-bottom: 0px;
+}
+
+.cost {
+	font-style: normal;
+	color: #A6A6A6;
+}
+
+.attend {
+	background-color: #D3EDD4;
+}
+
+.cancel {
+	background-color: #F0D4D1;
+}
+
