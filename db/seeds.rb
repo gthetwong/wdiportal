@@ -14,8 +14,8 @@ two = User.create(firstname: "Two", lastname: "Student", githubhandle: "ghgfdksg
 three = User.create(firstname: "Three", lastname: "Student", githubhandle: "fjdsag", email: "student3@email.com", password: "password", password_confirmation: "password")
 
 m = Event.create(title: "Bowling", date: Date.today, time: Time.now, location: "414 Brannan St", description: "Beer", cost: 0)
-n = Event.create(title: "Rock Climbing", date: Date.today, time: Time.now, location: "50 Fulton St", description: "Climbing rocks", cost: 5)
 o = Event.create(title: "Rock Climbing", date: Date.today, time: Time.now, location: "50 Fulton St", description: "Climbing rocks", cost: 5)
+p = Event.create(title: "Rock Climbing", date: Date.today, time: Time.now, location: "50 Fulton St", description: "Climbing rocks", cost: 5)
 
 a = Project.create(title: "Synapse", url: "http://google.com", technology: "Pubmed API", description: "Find argfdticles ind argfdticle ind argfdticle ind argfdticle ind argfdticle ind argfdticle")
 b = Project.create(title: "Cinderella", url: "http://google.com", technology: "Zappos API", description: "Find shoes that fit Find shoes that fit Find shoes that fit Find shoes that fit")
