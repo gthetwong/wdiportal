@@ -13,9 +13,9 @@ one = User.create(firstname: "One", lastname: "Student", githubhandle: "gdsafa",
 two = User.create(firstname: "Two", lastname: "Student", githubhandle: "ghgfdksgf", email: "student2@email.com", password: "password", password_confirmation: "password")
 three = User.create(firstname: "Three", lastname: "Student", githubhandle: "fjdsag", email: "student3@email.com", password: "password", password_confirmation: "password")
 
-m = Events.create(title: "Bowling", date: Date.today, time: Time.now, location: "414 Brannan St", description: "Beer", cost: 0)
-n = Events.create(title: "Rock Climbing", date: Date.today, time: Time.now, location: "50 Fulton St", description: "Climbing rocks", cost: 5)
-o = Events.create(title: "Rock Climbing", date: Date.today, time: Time.now, location: "50 Fulton St", description: "Climbing rocks", cost: 5)
+m = Event.create(title: "Bowling", date: Date.today, time: Time.now, location: "414 Brannan St", description: "Beer", cost: 0)
+n = Event.create(title: "Rock Climbing", date: Date.today, time: Time.now, location: "50 Fulton St", description: "Climbing rocks", cost: 5)
+o = Event.create(title: "Rock Climbing", date: Date.today, time: Time.now, location: "50 Fulton St", description: "Climbing rocks", cost: 5)
 
 a = Project.create(title: "Synapse", url: "http://google.com", technology: "Pubmed API", description: "Find argfdticles ind argfdticle ind argfdticle ind argfdticle ind argfdticle ind argfdticle")
 b = Project.create(title: "Cinderella", url: "http://google.com", technology: "Zappos API", description: "Find shoes that fit Find shoes that fit Find shoes that fit Find shoes that fit")
@@ -30,7 +30,6 @@ i = Resource.create(title: "Buttons", url: "http://google.com", description: "Ma
 j = Resource.create(title: "Formbuilder", url: "http://google.com", description: "Make foFind shoes that fit Find shoes that fit rms in bootstrap")
 k = Resource.create(title: "Buttons", url: "http://google.com", description: "Make buttons")
 l = Resource.create(title: "Formbuilder", url: "http://google.com", description: "Make foFind shoes that fit Find shoes that fit rms in bootstrap")
-p = Resource.create(title: "Formbuilder", url: "http://google.com", description: "Make foFind shoes that fit Find shoes that fit rms in bootstrap")
 
 
 one.projects << a
