@@ -37,8 +37,8 @@ one.projects << b
 one.projects << c
 
 one.events << m
-one.events << n
 one.events << o
+one.events << p
 
 n.resources << h
 n.resources << g
