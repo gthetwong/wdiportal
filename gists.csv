@@ -19,4 +19,16 @@ Avoiding fat controllers, https://github.com/wdi-sf-jan-2014/contacts, Alex
 Intro to jQuery, https://gist.github.com/DelmerGA/8739407, Delmer 
 User Authorization, https://github.com/rsofaer/wdi6_cook_book_auth_final, Rafi 
 Active record associations, https://github.com/wdi-sf-jan-2014/notes/blob/master/active_record_associations/migrations_and_associations.md, Tim 
-Debugging and pry, https://github.com/wdi-sf-jan-2014/notes/blob/master/debugging.md, Alex 
+Debugging and Pry, https://github.com/wdi-sf-jan-2014/notes/blob/master/debugging.md, Alex 
+GON for Google Maps, https://github.com/wdi-sf-jan-2014/notes/tree/master/gon_demo_with_maps, Tim
+Heroku and secrets, https://github.com/wdi-sf-jan-2014/notes/blob/master/heroku.md, Rafi
+Devise, https://github.com/plataformatec/devise, Dennis
+ActionMailer, https://github.com/wdi-sf-jan-2014/notes/blob/master/action_mailer/ActionMailer.md, Markus
+Setting up Rails on Heroku, https://devcenter.heroku.com/articles/getting-started-with-rails4#local-workstation-setup, Alex
+HTML and CSS, https://github.com/wdi-sf-jan-2014/notes/blob/master/dom_intro_css/dom_intro_css.md, Rafi
+Intro to JavaScript, https://github.com/wdi-sf-jan-2014/notes/blob/master/js_intro/README.md, Spencer
+JavaScript Functions, https://github.com/wdi-sf-jan-2014/notes/blob/master/js_functions/js_functions.md, Alex
+RSpec test driven development, https://github.com/wdi-sf-jan-2014/notes/blob/master/rails_tdd_intro.md, Alex
+Nested resources, https://gist.github.com/neurosaurus/4fdb2a49123e1d80e23d, Tripta
+Redis and sidekiq, https://github.com/wdi-sf-jan-2014/notes/blob/master/redis_and_sidekiq/redis_and_sidekiq.md, Alex
+Polymorphic associations, https://github.com/wdi-sf-jan-2014/notes/blob/master/polymorphic_association/polymorphic_association.md, Spencer
