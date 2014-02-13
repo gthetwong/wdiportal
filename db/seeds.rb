@@ -30,6 +30,8 @@ i = Resource.create(title: "Buttons", url: "http://google.com", description: "Ma
 j = Resource.create(title: "Formbuilder", url: "http://google.com", description: "Make foFind shoes that fit Find shoes that fit rms in bootstrap")
 k = Resource.create(title: "Buttons", url: "http://google.com", description: "Make buttons")
 l = Resource.create(title: "Formbuilder", url: "http://google.com", description: "Make foFind shoes that fit Find shoes that fit rms in bootstrap")
+p = Resource.create(title: "Formbuilder", url: "http://google.com", description: "Make foFind shoes that fit Find shoes that fit rms in bootstrap")
+
 
 one.projects << a
 one.projects << b
