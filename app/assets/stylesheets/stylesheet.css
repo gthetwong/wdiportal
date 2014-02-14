@@ -356,3 +356,7 @@ div > form {
 	border: 1px solid #808080;
 	border-radius: 2px;
 }
+
+.profile {
+	padding-top: 30px;
+}
