@@ -71,7 +71,7 @@ class ProjectsController < ApplicationController
 				flash[:alert] = "This is not your project!"
 				redirect_to :projects
 			end
-			project.destroy(id)
+			project.destroy
 			redirect_to projects_path
 		else
 			flash[:alert] = "You must be a student"

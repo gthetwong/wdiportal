@@ -9,14 +9,14 @@
 		<div class="left">
 		<h2><%= @user.firstname %> <%= @user.lastname %></h2>
 
-		<%= @user.githubhandle %> <br>
-		<%= @user.email %>
+		<img src="<%= asset_path( 'github2.png' ) %>" class="githubimg"/><%= @user.githubhandle %> <br>
+		<img src="<%= asset_path( 'email.png' ) %>" class="top"/><%= @user.email %> <br>
 
 		<% if current_user.role == "student" %>
 			<% if @user.squad.nil? %>
-				<p>You have not been assigned to a squad yet</p>
+				<img src="<%= asset_path( 'squad.png' ) %>" class="top"/><p>You have not been assigned to a squad yet</p>
 			<% else %>
-				<%= @instructor %>
+				<img src="<%= asset_path( 'squad.png' ) %>" class="top"/><%= @instructor %>
 			<% end %>
 		<% end %>
 		</div>
@@ -29,7 +29,7 @@
 
 		<% unless current_user.role == "coordinator" %>
 
-			<h3 class="second eventtitle">EVENTS</h3>
+			<h3 class="second eventtitle"><img src="<%= asset_path( 'events.png' ) %>" />EVENTS</h3>
 
 			<% if @user.events.empty? %>
 				<p>No events! <a href="/events">Check for events</a></p>
@@ -54,7 +54,7 @@
 		<% if current_user.role == "student" %>
 		<div class="background">
 
-		<h3 class="second">PROJECTS</h3>
+		<h3 class="second"><img src="<%= asset_path( 'projects.png' ) %>" />PROJECTS</h3>
 
 			<% if @user.projects.empty? %>
 				<p>No projects! <a href="/projects/new">Add a projects</a></p>
@@ -73,7 +73,7 @@
 		<% unless current_user.role == "coordinator" %>
 		<div class="background resourcesdiv">
 
-			<h3 id="resourcestitle">RESOURCES</h3>
+			<h3 id="resourcestitle"><img src="<%= asset_path( 'resources.png' ) %>" />RESOURCES</h3>
 
 			<% if @user.resources.empty? %>
 				<p>No resources! <a href="/resources/new">Add a resource</a></p>
@@ -125,19 +125,14 @@
 <script>
 
 var divwidth = $( "table" ).width();
+var datewidth = $( "div.date" ).width();
 
 $(document).ready(function(){    
-    $( "div.date" ).css({height: $( "div.date" ).width()}); 
+    $( "div.date" ).height( datewidth - 10); 
 });
 
 $(document).ready(function(){
-
-	$( "div.date" ).css({height: $( "div.date" ).width()});
-
-	if divwidth < 300 {
-    	$( "div.user" ).css({width: divwidth});
-	};
-
-})
+	$( "div.user" ).css({width: divwidth});
+});
 
 </script>

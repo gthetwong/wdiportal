@@ -8,9 +8,10 @@
 	
 		<tr>
 			<td>
-				<span class="tabletitle"><%= link_to "#{user.firstname} #{user.lastname}", user_path(user) %> <br> </span>
-	      		<%= user.githubhandle %> <br>
-	      		<%= user.email %>
+				<p class="tabletitle"><%= link_to "#{user.firstname} #{user.lastname}", user_path(user) %> <br> </p>
+	      		<span class="tabledescription">
+	      		<img src="<%= asset_path( 'github2.png' ) %>" class="githubimg"/><%= user.githubhandle %> <br>
+						<img src="<%= asset_path( 'email.png' ) %>" class="emailimg"/><%= user.email %> <br></span>
 	      	</td>
 
 			<td>
