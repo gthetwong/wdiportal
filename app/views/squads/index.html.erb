@@ -12,7 +12,11 @@
 
 <% if @squads.empty? %>
 
-	<p class="none">You have not been assigned to a squad yet.</p>
+	<% if current_user.role == "coordinator" %>
+		<p class="none">No squads</p>
+	<% else %>
+		<p class="none">You have not been assigned to a squad yet.</p>
+	<% end %>
 
 <% elsif (( current_user.squad.nil? ) && ( current_user.role != "coordinator" ))  %>
 

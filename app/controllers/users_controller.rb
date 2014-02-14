@@ -7,8 +7,11 @@ class UsersController < ApplicationController
 
 	def show
 		current_user.visits.create(action: "view user")
-		id = params.require(:id)
-		@user = User.find(id)
+		if params[:id].nil?
+			@user = current_user
+		else
+			@user = User.find(params[:id])
+		end
 		unless ( @user.squad.nil? || @user.squad.users.where(:role => "instructor").first.nil? )
 			@instructor = @user.squad.users.where(:role => "instructor").first.firstname
 		end
