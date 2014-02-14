@@ -9,14 +9,17 @@
 		<div class="left">
 		<h2><%= @user.firstname %> <%= @user.lastname %></h2>
 
+		<% if @user.role != "coordinator" %>
 		<img src="<%= asset_path( 'github2.png' ) %>" class="githubimg"/><%= @user.githubhandle %> <br>
+		<% end %>
+
 		<img src="<%= asset_path( 'email.png' ) %>" class="top"/><%= @user.email %> <br>
 
 		<% if current_user.role == "student" %>
 			<% if @user.squad.nil? %>
-				<img src="<%= asset_path( 'squad.png' ) %>" class="top"/><p>You have not been assigned to a squad yet</p>
+				<p><img src="<%= asset_path( 'squad.png' ) %>" class="bottom"/>You have not been assigned to a squad yet</p>
 			<% else %>
-				<img src="<%= asset_path( 'squad.png' ) %>" class="top"/><%= @instructor %>
+				<img src="<%= asset_path( 'squad.png' ) %>" class="bottom"/><%= @instructor %>
 			<% end %>
 		<% end %>
 		</div>
@@ -32,7 +35,11 @@
 			<h3 class="second eventtitle"><img src="<%= asset_path( 'events.png' ) %>" />EVENTS</h3>
 
 			<% if @user.events.empty? %>
-				<p>No events! <a href="/events">Check for events</a></p>
+				<div class="dates">
+				<div class="date">
+				<p>No events! <a href="/events"><br>Check for events</a></p>
+				</div>
+				</div>
 			<% end %>
 
 			<div class="dates">
@@ -109,7 +116,7 @@
 			<% else %>
 				<% @students.each do |student| %>
 					<%= student.firstname %> <%= student.lastname %> <br>
-				<% end %>
+				<% end %> <p class="space"></p>
 			<% end %>
 				
 		<% end %>

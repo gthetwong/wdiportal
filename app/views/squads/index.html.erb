@@ -12,11 +12,11 @@
 
 <% if @squads.empty? %>
 
-	<p>You have not been assigned to a squad yet.</p>
+	<p class="none">You have not been assigned to a squad yet.</p>
 
 <% elsif (( current_user.squad.nil? ) && ( current_user.role != "coordinator" ))  %>
 
-	<p>You have not been assigned a squad.</p>
+	<p class="none">You have not been assigned a squad yet.</p>
 
 <% elsif current_user.role != "coordinator" %>
 
@@ -26,16 +26,14 @@
 
 		<tr>
 	    	<td>
-	    		Instructor <br>
-	      		<%= squad_instructor(f).first.firstname %> <br><br>
+	      		<p class="instructor"><%= squad_instructor(f).first.firstname %></p>
 			
 	      		<% if squad_students(f).empty? %>
-	      			No students assigned<br><br>
+	      			<p>No students assigned</p>
 	      		<% else %>
-				    Students <br>
 		      		<% squad_students(f).each do |student| %>
-		      			<%= student.firstname %> <br>
-		      		<% end %> <br>
+		      			<p class="student"><%= student.firstname %> <%= student.lastname %></p>
+		      		<% end %>
 		      	<% end %>
 		    </td>
 
@@ -55,15 +53,13 @@
 
 			<tr>
 		    	<td>
-		    		Instructor <br>
-		      		<%= squad_instructor(f).first.firstname %> <br><br>
+		      		<p class="instructor"><%= squad_instructor(f).first.firstname %></p>
 				
 		      		<% if squad_students(f).empty? %>
-		      			No students assigned<br><br>
+		      			<p class="none">No students assigned</p>
 		      		<% else %>
-					    Students <br>
 			      		<% squad_students(f).each do |student| %>
-			      			<%= student.firstname %> <br>
+			      			<p class="student"><%= student.firstname %> <%= student.lastname %></p>
 			      		<% end %> <br>
 			      	<% end %>
 			    </td>
