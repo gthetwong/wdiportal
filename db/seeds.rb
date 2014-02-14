@@ -7,45 +7,30 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 
-n = User.create(firstname: "Alex", lastname: "Notov", githubhandle: "stoic", email: "alex@gmail.com", password: "password", password_confirmation: "password", role: "instructor")
-c = User.create(firstname: "Carina", lastname: "Ho", githubhandle: "candle", email: "carina@email.com", password: "password", password_confirmation: "password", role: "coordinator")
-one = User.create(firstname: "Brian", lastname: "Hawkings", githubhandle: "harrowl", email: "student1@email.com", password: "password", password_confirmation: "password")
-two = User.create(firstname: "Dwight", lastname: "Smith", githubhandle: "askark", email: "student2@email.com", password: "password", password_confirmation: "password")
-three = User.create(firstname: "Sally", lastname: "Elle", githubhandle: "calima", email: "student3@email.com", password: "password", password_confirmation: "password")
+student = User.create(firstname: "Tanner", lastname: "Swenson", githubhandle: "tswengit", email: "tanner@email.com", password: "password", password_confirmation: "password")
+student2 = User.create(firstname: "Stuart", lastname: "Stein", githubhandle: "unclestu", email: "stuart@email.com", password: "password", password_confirmation: "password")
 
-# m = Event.create(title: "Bowling", date: Date.today, time: Time.now, location: "414 Brannan St", description: "Beer", cost: 0)
-# o = Event.create(title: "Rock Climbing", date: Date.today, time: Time.now, location: "50 Fulton St", description: "Climbing rocks", cost: 5)
-# p = Event.create(title: "Rock Climbing", date: Date.today, time: Time.now, location: "50 Fulton St", description: "Climbing rocks", cost: 5)
+g = Event.create(title: "Bowling", date: Date.today, time: Time.now, location: "414 Brannan St", description: "Beer and bowling", cost: 0)
+h = Event.create(title: "Rock Climbing", date: Date.today, time: Time.now, location: "50 Fulton St", description: "Climbing rocks", cost: 5)
 
-# a = Project.create(title: "Synapse", url: "http://google.com", technology: "Pubmed API", description: "Find argfdticles ind argfdticle ind argfdticle ind argfdticle ind argfdticle ind argfdticle")
-# b = Project.create(title: "Cinderella", url: "http://google.com", technology: "Zappos API", description: "Find shoes that fit Find shoes that fit Find shoes that fit Find shoes that fit")
-# c = Project.create(title: "Synapse", url: "http://google.com", technology: "Pubmed API", description: "Find argfdticles ind argfdticle ind argfdticle ind argfdticle ind argfdticle ind argfdticle")
-# d = Project.create(title: "Cinderella", url: "http://google.com", technology: "Zappos API", description: "Find shoes that fit Find shoes that fit Find shoes that fit Find shoes that fit")
-# e = Project.create(title: "Synapse", url: "http://google.com", technology: "Pubmed API", description: "Find argfdticles ind argfdticle ind argfdticle ind argfdticle ind argfdticle ind argfdticle")
-# f = Project.create(title: "Cinderella", url: "http://google.com", technology: "Zappos API", description: "Find shoes that fit Find shoes that fit Find shoes that fit Find shoes that fit")
+a = Project.create(title: "Cinderella", url: "http://google.com", technology: "Zappos API", description: "Find shoes that fit based on your friends shoes and their sizes.")
+b = Project.create(title: "Synapse", url: "http://google.com", technology: "Pubmed API", description: "Connects neuroscientists based on where their research activated the brain.")
+c = Project.create(title: "Gestalt Weather", url: "http://google.com", technology: "Weather underground", description: "Displays the weather in one graphic.")
 
-# g = Resource.create(title: "Buttons", url: "http://google.com", description: "Make buttons")
-# h = Resource.create(title: "Formbuilder", url: "http://google.com", description: "Make foFind shoes that fit Find shoes that fit rms in bootstrap")
-# i = Resource.create(title: "Buttons", url: "http://google.com", description: "Make buttons")
-# j = Resource.create(title: "Formbuilder", url: "http://google.com", description: "Make foFind shoes that fit Find shoes that fit rms in bootstrap")
-# k = Resource.create(title: "Buttons", url: "http://google.com", description: "Make buttons")
-# l = Resource.create(title: "Formbuilder", url: "http://google.com", description: "Make foFind shoes that fit Find shoes that fit rms in bootstrap")
+d = Resource.create(title: "Buttons", url: "http://google.com", description: "Make custom buttons in Bootstrap.")
+e = Resource.create(title: "Formbuilder", url: "http://google.com", description: "Form helper generator.")
+f = Resource.create(title: "Roby Rogies", url: "http://google.com", description: "Podcast on how to learn.")
 
+student.projects << a
+student.projects << b
+student.projects << c
+student2.projects << c
 
-# one.projects << a
-# one.projects << b
-# one.projects << c
+student.events << g
 
-# one.events << m
-# one.events << o
-# one.events << p
+student.resources << d
+student.resources << e
 
-# n.resources << h
-# n.resources << g
-# n.resources << i
-
-# two.resources << k
-# two.resources << j
-# two.resources << l
+student2.resources << f
 
 
