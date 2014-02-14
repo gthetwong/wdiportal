@@ -350,3 +350,9 @@ div > form {
 	font-size: 13px;
 	font-weight: normal;
 }
+
+.form-control:active, .form-control:focus {
+	box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 1px rgba(160, 160, 160, 0.6);
+	border: 1px solid #808080;
+	border-radius: 2px;
+}

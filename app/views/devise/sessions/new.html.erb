@@ -20,3 +20,13 @@
 <%= render "devise/shared/links" %>
 
 </div>
+
+<script>
+
+var divwidth = $( "form" ).width();
+
+$(document).ready(function(){
+    $( "div.signin" ).css({width: divwidth});
+})
+
+</script>
