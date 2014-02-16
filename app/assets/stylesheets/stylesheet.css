@@ -75,7 +75,7 @@ table td {
 }
 
 #usertable tr td:last-child {
-    padding-right: 50px;
+    padding-right: 33px;
 }
 
 div > form {
