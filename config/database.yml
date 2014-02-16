@@ -7,6 +7,8 @@ development:
   adapter: postgresql
   database: wdiportal_development
   pool: 5
+  host: localhost
+  port: 5432
   timeout: 5000
 
 # Warning: The database defined as "test" will be erased and
@@ -16,10 +18,14 @@ test:
   adapter: postgresql
   database: db/wdiportal_test
   pool: 5
+  host: localhost
+  port: 5432
   timeout: 5000
 
 production:
   adapter: postgresql
   database: db/wdiportal_production
   pool: 5
+  host: localhost
+  port: 5432
   timeout: 5000
