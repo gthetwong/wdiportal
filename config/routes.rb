@@ -4,6 +4,8 @@ Wdiportal::Application.routes.draw do
 
   root to: "users#show"
 
+  get "/users/random_student", to: "users#random_student"
+
   get "/submissions/:assignment", to: "assignments#submissions", as: :submissions
 
   get "/site/home", to: "site#home"

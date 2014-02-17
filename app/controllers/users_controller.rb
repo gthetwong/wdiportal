@@ -43,4 +43,9 @@ class UsersController < ApplicationController
 		redirect_to users_path
 	end
 
+	def random_student
+		@students = User.where(role: "student")
+		@random_student = @students.sample
+	end
+
 end
