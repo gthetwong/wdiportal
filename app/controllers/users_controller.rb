@@ -16,9 +16,6 @@ class UsersController < ApplicationController
 			@instructor = @user.squad.users.where(:role => "instructor").first.firstname
 		end
 		@students = @user.squad.users.where(:role => "student") unless @user.squad.nil?
-		unless ( current_user.role == "instructor" || current_user.role == "coordinator" || @user == current_user )
-			redirect_to users_path
-		end
 	end
 
 	def form
