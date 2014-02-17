@@ -17,7 +17,7 @@ class GistsController < ApplicationController
 
 	def create
 		if current_user.email == "noahkaplan4@gmail.com"
-			parameters = params.require(:gist).permit(:title, :url)
+			parameters = params.require(:gist).permit(:title, :url, :instructor)
 			gist = Gist.create(parameters)
 			current_user.visits.create(action: "create gist")
 			flash[:alert] = "Error: " + gist.errors.full_messages.first if gist.errors.any?
@@ -42,7 +42,7 @@ class GistsController < ApplicationController
 	def update
 		if current_user.email == "noahkaplan4@gmail.com"
 			id = params.require(:id)
-			updates = params.require(:gist).permit(:title, :url)
+			updates = params.require(:gist).permit(:title, :url, :instructor)
 			gist = Gist.find(id)
 			gist.update(updates)
 			current_user.visits.create(action: "edit gist")
