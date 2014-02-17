@@ -2,6 +2,53 @@
 
 <h2>Events</h2>
 
+
+<% get_meetups %>
+
+<%= @results.each do |result| %>
+
+
+	<%= result.name  %>
+
+
+<% end %>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <%= ( button_to "New event", new_event_path, method: "get", class: "btn btn-warning" ) if ( current_user.role == "coordinator" )%> <br>
 
 <% if @events.empty? %>
