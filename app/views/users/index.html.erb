@@ -5,26 +5,28 @@
 <table id="usertable">
 
 	<% @users.each do |user| %>
-	
-		<tr>
-			<td>
-				<p class="tabletitle"><%= link_to "#{user.firstname} #{user.lastname}", user_path(user) %> <br> </p>
-	      		<span class="tabledescription">
-	      		<img src="<%= asset_path( 'github2.png' ) %>" class="githubimg"/><%= user.githubhandle %> <br>
-						<img src="<%= asset_path( 'email.png' ) %>" class="emailimg"/><%= user.email %> <br></span>
-	      	</td>
+		<% unless user.lastname == "Administrator" %>
 
-			<td>
-	      		<span class="lightgrey"><%= user.role %></span>
-			</td>
-			
-			<% if current_user.role == "coordinator" %>
-			<td>
-	      		<%= button_to "Change role", role_form_path(user), :method => "get", :class => "btn btn-default" %>
-			</td>
-			<% end %>
-    	</tr>
- 
+			<tr>
+				<td>
+					<p class="tabletitle"><%= link_to "#{user.firstname} #{user.lastname}", user_path(user) %> <br> </p>
+		      		<span class="tabledescription">
+		      		<img src="<%= asset_path( 'github2.png' ) %>" class="githubimg"/><%= user.githubhandle %> <br>
+							<img src="<%= asset_path( 'email.png' ) %>" class="emailimg"/><%= user.email %> <br></span>
+		      	</td>
+
+				<td>
+		      		<span class="lightgrey"><%= user.role %></span>
+				</td>
+				
+				<% if current_user.role == "coordinator" %>
+				<td>
+		      		<%= button_to "Change role", role_form_path(user), :method => "get", :class => "btn btn-default" %>
+				</td>
+				<% end %>
+	    	</tr>
+
+	 	<% end %>
 	<% end %>
 
 </table><br>

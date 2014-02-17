@@ -12,8 +12,10 @@
 		
 	    <% options = [] %>
 	    <% @unassigned_instructors.each do |instructor| %>
-			<% instructor_array = [instructor.firstname, instructor.id] %>
-			<% options << instructor_array %>
+	   		<% unless instructor.lastname == "Administrator" %>
+					<% instructor_array = [instructor.firstname, instructor.id] %>
+					<% options << instructor_array %>
+				<% end %>
 	    <% end %>
 
 	    <% if options.empty? %>
