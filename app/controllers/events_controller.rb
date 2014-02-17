@@ -3,8 +3,6 @@ class EventsController < ApplicationController
 	def index
 		current_user.visits.create(action: "view events")
 		@events = Event.all
-		RMeetup::Client.api_key = "71d76962b756b6f2a393521317528"
-		@results = RMeetup::Client.fetch(:events,{:zip => "94107"})
 	end
 
 	def new
