@@ -82,5 +82,6 @@ Wdiportal::Application.configure do
 
   config.serve_static_assets = true
 
+  config.action_mailer.delivery_method = :smtp
   config.action_mailer.default_url_options = { :host => 'https://wdiportal.herokuapp.com' }
 end
